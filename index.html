@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>andnowyoga — Classical Hatha Yoga Personal Guidance</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts for Serif & Sans Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#121316',
+                            card: '#1A1C23',
+                            border: '#2D323A',
+                            copper: '#D96B27',
+                            copperHover: '#C25A1C',
+                            textMuted: '#9CA3AF'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #121316;
+            color: #E5E7EB;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .serif-heading {
+            font-family: 'Cinzel', serif;
+        }
+        .bg-radial-gradient {
+            background: radial-gradient(circle at 50% 0%, rgba(217, 107, 39, 0.12) 0%, rgba(18, 19, 22, 0) 70%);
+        }
+        .card-glow {
+            transition: all 0.3s ease;
+        }
+        .card-glow:hover {
+            border-color: rgba(217, 107, 39, 0.4);
+            box-shadow: 0 0 25px -5px rgba(217, 107, 39, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-gray-200 antialiased selection:bg-brand-copper selection:text-white relative min-h-screen pb-16 md:pb-0">
+
+    <!-- Background Radial Overlay -->
+    <div class="absolute top-0 left-0 right-0 h-[800px] bg-radial-gradient pointer-events-none z-0"></div>
+
+    <!-- 1. Header & Navigation (Navbar) -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#121316]/80 border-b border-brand-border/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+<!-- Logo -->
+<a href="#" class="flex items-center gap-3 group">
+    <img src="img/logo.png" alt="andnowyoga logo" class="h-12 w-auto object-contain group-hover:opacity-90 transition">
+</a>
+
+                <!-- Middle (Desktop Navigation) -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                    <a href="#guidance" class="hover:text-brand-copper transition-colors">1:1 Guidance</a>
+                    <a href="#teacher" class="hover:text-brand-copper transition-colors">Teacher</a>
+                    <a href="#quiz" class="hover:text-brand-copper transition-colors">Diagnostic Quiz</a>
+                    <a href="#modules" class="hover:text-brand-copper transition-colors">Modules</a>
+                    <a href="#pillars" class="hover:text-brand-copper transition-colors">6 Pillars</a>
+                    <a href="#faq" class="hover:text-brand-copper transition-colors">FAQs</a>
+                </nav>
+
+                <!-- Right (CTA Button) -->
+                <div class="hidden md:flex items-center">
+                    <a href="#request-session" class="bg-brand-copper hover:bg-brand-copperHover text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition duration-200 shadow-lg shadow-brand-copper/20 hover:shadow-brand-copper/40">
+                        Request Session
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Navigation">
+                        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                        <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-brand-border bg-[#121316]/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-4">
+            <a href="#guidance" class="block text-gray-300 hover:text-brand-copper font-medium py-1">1:1 Guidance</a>
+            <a href="#teacher" class="block text-gray-300 hover:text-brand-copper font-medium py-1">Teacher</a>
+            <a href="#quiz" class="block text-gray-300 hover:text-brand-copper font-medium py-1">Diagnostic Quiz</a>
+            <a href="#modules" class="block text-gray-300 hover:text-brand-copper font-medium py-1">Modules</a>
+            <a href="#pillars" class="block text-gray-300 hover:text-brand-copper font-medium py-1">6 Pillars</a>
+            <a href="#faq" class="block text-gray-300 hover:text-brand-copper font-medium py-1">FAQs</a>
+            <div class="pt-2">
+                <a href="#request-session" class="block text-center bg-brand-copper hover:bg-brand-copperHover text-white px-5 py-3 rounded-lg text-sm font-semibold transition">
+                    Request Session
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <!-- 2. Hero Section -->
+        <section id="guidance" class="pt-16 pb-20 md:pt-24 md:pb-28 max-w-5xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-copper/10 border border-brand-copper/30 mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand-copper animate-pulse"></span>
+                <span class="text-xs font-semibold uppercase tracking-widest text-brand-copper">1:1 SADHANA GUIDANCE</span>
+            </div>
+
+            <h1 class="serif-heading text-3xl sm:text-5xl lg:text-6xl font-normal text-white leading-tight mb-6">
+                Elevate Your Sadhana from Routine Exercise to Sacred Transformation
+            </h1>
+
+            <p class="text-gray-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8 font-light">
+                Receive precision physical alignment, deep pranic refinement, and individualized lifestyle mastery through structured Classical Hatha Yoga personal guidance sessions.
+            </p>
+
+            <div class="inline-block bg-brand-card/80 border border-brand-border px-4 py-2 rounded-md text-xs sm:text-sm font-medium text-gray-300 mb-8">
+                1.5 Hours / Day • One-to-One • Online & In-Person
+            </div>
+
+            <div class="flex flex-col items-center gap-4 mb-14">
+                <p class="text-xs uppercase tracking-wider text-brand-textMuted font-medium">
+                    Foundation 2-Day Module & 3-Day Intensive Available
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
+                    <a href="#request-session" class="bg-brand-copper hover:bg-brand-copperHover text-white px-8 py-3.5 rounded-lg text-sm font-semibold transition duration-200 shadow-lg shadow-brand-copper/25 text-center">
+                        Book Your Personal Session
+                    </a>
+                    <a href="#quiz" class="border border-brand-border bg-brand-card/50 hover:bg-brand-card text-gray-200 px-8 py-3.5 rounded-lg text-sm font-semibold transition text-center hover:border-gray-500">
+                        Take Diagnostic Quiz
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-brand-border/50 max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-6 text-xs text-brand-textMuted">
+                <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-brand-copper"></i> 100% Authentic Classical Lineage</span>
+                <span class="hidden sm:inline">•</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="user-check" class="w-4 h-4 text-brand-copper"></i> 1-on-1 Personalized Attention</span>
+                <span class="hidden sm:inline">•</span>
+                <span class="flex items-center gap-1.5"><i data-lucide="globe" class="w-4 h-4 text-brand-copper"></i> Online & In-Person Modules</span>
+            </div>
+        </section>
+
+        <!-- Teacher Lineage & Credentials Profile Section -->
+        <section id="teacher" class="py-20 bg-black/40 border-y border-brand-border/40">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative group">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-brand-copper to-yellow-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
+                            <div class="relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-4">
+                                <div class="w-full h-80 sm:h-96 rounded-xl bg-neutral-800 flex flex-col items-center justify-center text-center p-6 border border-brand-border/50">
+                                    <div class="w-24 h-24 rounded-full bg-brand-copper/10 border-2 border-brand-copper/40 flex items-center justify-center mb-4 text-brand-copper">
+                                        <i data-lucide="user" class="w-12 h-12"></i>
+                                    </div>
+                                    <h4 class="serif-heading text-xl text-white font-semibold">Acharya Anand</h4>
+                                    <p class="text-xs text-brand-copper uppercase tracking-wider mt-1 font-medium">Classical Hatha Yoga Teacher</p>
+                                    <span class="text-xs text-brand-textMuted mt-4 italic">"Transmitting classical yoga in its pure, unadulterated form."</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-copper/10 border border-brand-copper/30">
+                            <i data-lucide="award" class="w-3.5 h-3.5 text-brand-copper"></i>
+                            <span class="text-xs font-semibold uppercase tracking-widest text-brand-copper">Authentic Lineage</span>
+                        </div>
+
+                        <h2 class="serif-heading text-2xl sm:text-4xl text-white">
+                            Rooted in Tradition, Grounded in Precision
+                        </h2>
+
+                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed font-light">
+                            Trained rigorously in traditional ashram environments, Acharya Anand brings over 1,750+ hours of classical gurukul education and 8+ years of dedicated instruction in Classical Hatha Yoga.
+                        </p>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
+                            <div class="bg-brand-card border border-brand-border p-4 rounded-xl">
+                                <div class="serif-heading text-2xl text-brand-copper font-bold">1,750+</div>
+                                <div class="text-xs text-brand-textMuted mt-1">Ashram Training Hours</div>
+                            </div>
+                            <div class="bg-brand-card border border-brand-border p-4 rounded-xl">
+                                <div class="serif-heading text-2xl text-brand-copper font-bold">8+</div>
+                                <div class="text-xs text-brand-textMuted mt-1">Years Teaching Sadhana</div>
+                            </div>
+                            <div class="bg-brand-card border border-brand-border p-4 rounded-xl col-span-2 sm:col-span-1">
+                                <div class="serif-heading text-2xl text-brand-copper font-bold">500+</div>
+                                <div class="text-xs text-brand-textMuted mt-1">Practitioners Guided</div>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-3 pt-2 text-sm text-gray-300">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-copper flex-shrink-0"></i>
+                                <span>Certified in Classical Hatha Yoga & Yogic Physiology</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-copper flex-shrink-0"></i>
+                                <span>Direct lineage transmission focusing on inner alignment & prana</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-copper flex-shrink-0"></i>
+                                <span>Specialized in custom sadhana refinement & posture micro-corrections</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Diagnostics Quiz -->
+        <section id="quiz" class="py-20 max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-copper/10 border border-brand-copper/30 mb-3">
+                    <i data-lucide="help-circle" class="w-3.5 h-3.5 text-brand-copper"></i>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-brand-copper">Sadhana Assessment</span>
+                </div>
+                <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-3">
+                    Identify Your Practice Gap
+                </h2>
+                <p class="text-brand-textMuted text-sm">
+                    Answer 3 quick questions to discover where your practice needs refinement and find the right module for you.
+                </p>
+            </div>
+
+            <div class="bg-brand-card border border-brand-border p-6 sm:p-8 rounded-2xl shadow-xl">
+                <!-- Step 1 -->
+                <div id="quiz-step-1" class="quiz-step space-y-4">
+                    <div class="flex items-center justify-between text-xs text-brand-textMuted font-medium mb-2">
+                        <span>QUESTION 1 OF 3</span>
+                        <span class="text-brand-copper">33%</span>
+                    </div>
+                    <h3 class="serif-heading text-lg sm:text-xl text-white">What primary challenge do you experience during daily sadhana?</h3>
+                    <div class="space-y-2.5 pt-2">
+                        <button onclick="nextQuizStep(1, 'posture')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
+                            <span>Physical strain, joint stiffness, or difficulty holding postures.</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
+                        </button>
+                        <button onclick="nextQuizStep(1, 'breath')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
+                            <span>Irregular breathing patterns or early fatigue during pranayama.</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
+                        </button>
+                        <button onclick="nextQuizStep(1, 'routine')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
+                            <span>Inconsistent daily schedule, diet confusion, or mental restlessness.</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="quiz-step-2" class="quiz-step hidden space-y-4">
+                    <div class="flex items-center justify-between text-xs text-brand-textMuted font-medium mb-2">
+                        <span>QUESTION 2 OF 3</span>
+                        <span class="text-brand-copper">66%</span>
+                    </div>
+                    <h3 class="serif-heading text-lg sm:text-xl text-white">How consistently have you been practicing Classical Hatha Yoga?</h3>
+                    <div class="space-y-2.5 pt-2">
+                        <button onclick="nextQuizStep(2, 'beginner')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
+                            <span>Less than 6 months (establishing core foundations).</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
+                        </button>
+                        <button onclick="nextQuizStep(2, 'intermediate')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
+                            <span>6 months to 2 years (seeking deeper alignment corrections).</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
+                        </button>
+                        <button onclick="nextQuizStep(2, 'advanced')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
+                            <span>2+ years (feeling stagnant or seeking full spiritual overhaul).</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div id="quiz-step-3" class="quiz-step hidden space-y-4">
+                    <div class="flex items-center justify-between text-xs text-brand-textMuted font-medium mb-2">
+                        <span>QUESTION 3 OF 3</span>
+                        <span class="text-brand-copper">100%</span>
+                    </div>
+                    <h3 class="serif-heading text-lg sm:text-xl text-white">What is your primary goal for seeking personal guidance?</h3>
+                    <div class="space-y-2.5 pt-2">
+                        <button onclick="finishQuiz('2-day')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
+                            <span>Quick posture check-up and immediate alignment adjustments.</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
+                        </button>
+                        <button onclick="finishQuiz('3-day')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
+                            <span>Comprehensive restructuring of diet, breath, and 90-day spiritual plan.</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quiz Result -->
+                <div id="quiz-result" class="hidden text-center py-6 space-y-6">
+                    <div class="w-16 h-16 bg-brand-copper/10 border border-brand-copper/30 text-brand-copper rounded-full flex items-center justify-center mx-auto">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-brand-copper font-semibold">Recommended Module</span>
+                        <h3 id="result-title" class="serif-heading text-2xl text-white mt-1">Foundation 2-Day Module</h3>
+                        <p id="result-desc" class="text-sm text-brand-textMuted max-w-lg mx-auto mt-2 leading-relaxed">
+                            Based on your answers, a focused diagnostic check-up will resolve your alignment bottlenecks and refine your daily practice sequence.
+                        </p>
+                    </div>
+                    <div class="pt-2">
+                        <a href="#request-session" class="inline-block bg-brand-copper hover:bg-brand-copperHover text-white px-8 py-3 rounded-lg text-sm font-semibold transition">
+                            Book Recommended Guidance
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. The Problem Section ("Why Seekers Stall") -->
+        <section class="py-20 bg-black/20 border-y border-brand-border/40">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
+                        Why Practitioners Plateau in Their Sadhana
+                    </h2>
+                    <p class="text-brand-textMuted text-sm sm:text-base">
+                        Many dedicated practitioners practice diligent sadhana for years without experiencing deep inner transformation. Here is why many find themselves stuck on a plateau:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-brand-card/60 border border-brand-border p-6 rounded-xl card-glow">
+                        <div class="w-10 h-10 rounded-lg bg-brand-copper/10 flex items-center justify-center text-brand-copper mb-4">
+                            <i data-lucide="alert-circle" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="serif-heading text-lg text-white mb-2">Micro-Misalignments</h3>
+                        <p class="text-sm text-brand-textMuted leading-relaxed">
+                            Slight physical inaccuracies in posture (Asana) that accumulate tension over time instead of freeing prana.
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-card/60 border border-brand-border p-6 rounded-xl card-glow">
+                        <div class="w-10 h-10 rounded-lg bg-brand-copper/10 flex items-center justify-center text-brand-copper mb-4">
+                            <i data-lucide="wind" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="serif-heading text-lg text-white mb-2">Superficial Breath Awareness</h3>
+                        <p class="text-sm text-brand-textMuted leading-relaxed">
+                            Practicing Pranayama without precise timing, bandha engagement, or structural body readiness.
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-card/60 border border-brand-border p-6 rounded-xl card-glow">
+                        <div class="w-10 h-10 rounded-lg bg-brand-copper/10 flex items-center justify-center text-brand-copper mb-4">
+                            <i data-lucide="apple" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="serif-heading text-lg text-white mb-2">Conflicting Diet & Lifestyle</h3>
+                        <p class="text-sm text-brand-textMuted leading-relaxed">
+                            Consuming non-sattvic foods or irregular meal timings that actively counteract morning practices.
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-card/60 border border-brand-border p-6 rounded-xl card-glow">
+                        <div class="w-10 h-10 rounded-lg bg-brand-copper/10 flex items-center justify-center text-brand-copper mb-4">
+                            <i data-lucide="help-circle" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="serif-heading text-lg text-white mb-2">Solitary Doubts</h3>
+                        <p class="text-sm text-brand-textMuted leading-relaxed">
+                            Experiencing strange meditative sensations or physical roadblocks without an experienced teacher to offer context.
+                        </p>
+                    </div>
+
+                    <div class="bg-brand-card/60 border border-brand-border p-6 rounded-xl card-glow md:col-span-2 lg:col-span-1">
+                        <div class="w-10 h-10 rounded-lg bg-brand-copper/10 flex items-center justify-center text-brand-copper mb-4">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="serif-heading text-lg text-white mb-2">Lack of Accountability</h3>
+                        <p class="text-sm text-brand-textMuted leading-relaxed">
+                            Difficulty maintaining daily discipline amid modern work pressures, family responsibilities, and distractions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. What The Sessions Cover (Module Comparison Grid) -->
+        <section id="modules" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
+                    Structured Sessions Tailored to Your Depth
+                </h2>
+                <p class="text-brand-textMuted text-sm sm:text-base">
+                    Select the program depth that best aligns with your current practice check-ups or full spiritual overhaul.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Module 1 -->
+                <div class="bg-brand-card border border-brand-border p-8 rounded-2xl relative flex flex-col justify-between card-glow">
+                    <div>
+                        <div class="text-xs font-semibold text-brand-copper uppercase tracking-wider mb-2">Foundation Module</div>
+                        <h3 class="serif-heading text-2xl text-white mb-2">2-Day Intensive</h3>
+                        <p class="text-sm text-brand-textMuted mb-6">1.5 Hours / Day (Total 3 Hours) — Ideal for practice check-ups and core corrections.</p>
+                        <div class="border-b border-brand-border mb-6"></div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start gap-3">
+                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-sm text-gray-300">Diagnostic posture assessment</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-sm text-gray-300">Breath refinement patterns</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-sm text-gray-300">Sattvic diet & timing adjustments</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-sm text-gray-300">Custom daily practice checklist</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#request-session" class="w-full py-3 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-border/40 text-center text-sm font-semibold transition text-white">
+                        Select 2-Day Module
+                    </a>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="bg-brand-card border-2 border-brand-copper/50 p-8 rounded-2xl relative flex flex-col justify-between card-glow shadow-xl shadow-brand-copper/5">
+                    <div class="absolute -top-3.5 right-6 bg-brand-copper text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Recommended
+                    </div>
+                    <div>
+                        <div class="text-xs font-semibold text-brand-copper uppercase tracking-wider mb-2">Deep Overhaul</div>
+                        <h3 class="serif-heading text-2xl text-white mb-2">3-Day Intensive Module</h3>
+                        <p class="text-sm text-brand-textMuted mb-6">1.5 Hours / Day (Total 4.5 Hours) — Complete spiritual overhaul & restructuring.</p>
+                        <div class="border-b border-brand-border mb-6"></div>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start gap-3">
+                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-sm text-gray-300">Complete biomechanical & energetic posture audit</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-sm text-gray-300">Advanced breath refinement & internal focus techniques</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-sm text-gray-300">Full Sattvic diet & fasting protocols</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-sm text-gray-300">Extended Q&A for meditative doubts & blocks</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
+                                <span class="text-sm text-gray-300">Personal 90-Day Spiritual Roadmap</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#request-session" class="w-full py-3 rounded-lg bg-brand-copper hover:bg-brand-copperHover text-center text-sm font-semibold transition text-white shadow-md">
+                        Select 3-Day Intensive
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. The 6 Core Pillars of Guidance -->
+        <section id="pillars" class="py-20 bg-black/20 border-y border-brand-border/40">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
+                        The 6 Dimensions of Practice
+                    </h2>
+                    <p class="text-brand-textMuted text-sm sm:text-base">
+                        A holistic, structured approach to refining every aspect of your sadhana journey.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-serif text-brand-copper mb-2 block">01</span>
+                            <h3 class="serif-heading text-lg text-white mb-2">Physical Alignment</h3>
+                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Asana Precision</p>
+                            <p class="text-sm text-brand-textMuted leading-relaxed">
+                                Correct subtle skeletal misalignments, release joint restrictions, and learn posture stability so energy flows unobstructed.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-serif text-brand-copper mb-2 block">02</span>
+                            <h3 class="serif-heading text-lg text-white mb-2">Breath Awareness</h3>
+                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Prana Refinement</p>
+                            <p class="text-sm text-brand-textMuted leading-relaxed">
+                                Master rhythmic breath retention, diaphragm engagement, and subtle energy distribution to calm the nervous system.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-serif text-brand-copper mb-2 block">03</span>
+                            <h3 class="serif-heading text-lg text-white mb-2">Diet & Sattvic Discipline</h3>
+                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Dietary Mastery</p>
+                            <p class="text-sm text-brand-textMuted leading-relaxed">
+                                Optimize digestion, meal timing, and food choices so your physical body becomes an asset rather than an obstacle during practice.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-serif text-brand-copper mb-2 block">04</span>
+                            <h3 class="serif-heading text-lg text-white mb-2">Mental Clarity</h3>
+                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Meditation Context</p>
+                            <p class="text-sm text-brand-textMuted leading-relaxed">
+                                Gain conceptual understanding of mind mechanics, dissolve doubts, and properly contextualize meditative experiences.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-serif text-brand-copper mb-2 block">05</span>
+                            <h3 class="serif-heading text-lg text-white mb-2">Daily Structure</h3>
+                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Habit Architecture</p>
+                            <p class="text-sm text-brand-textMuted leading-relaxed">
+                                Build an unwavering routine tailored to your work and family commitments that protects your daily sadhana practice.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-serif text-brand-copper mb-2 block">06</span>
+                            <h3 class="serif-heading text-lg text-white mb-2">Long-Term Direction</h3>
+                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Spiritual Roadmap</p>
+                            <p class="text-sm text-brand-textMuted leading-relaxed">
+                                Establish clear milestones for internal evolution, moving beyond casual practice into purpose-driven spiritual living.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Process Step-by-Step ("How It Works") -->
+        <section class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
+                    How Your Guidance Unfolds
+                </h2>
+                <p class="text-brand-textMuted text-sm sm:text-base">
+                    A seamless 3-step pathway to personal practice refinement.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <div class="bg-brand-card/40 border border-brand-border p-6 rounded-xl relative text-center">
+                    <div class="w-12 h-12 rounded-full bg-brand-copper/10 border border-brand-copper/30 text-brand-copper flex items-center justify-center font-serif text-lg font-bold mx-auto mb-4">
+                        1
+                    </div>
+                    <h3 class="serif-heading text-lg text-white mb-2">Request Your Session</h3>
+                    <p class="text-sm text-brand-textMuted leading-relaxed">
+                        Fill out the pre-guidance assessment form to document your current practices and main goals.
+                    </p>
+                </div>
+
+                <div class="bg-brand-card/40 border border-brand-border p-6 rounded-xl relative text-center">
+                    <div class="w-12 h-12 rounded-full bg-brand-copper/10 border border-brand-copper/30 text-brand-copper flex items-center justify-center font-serif text-lg font-bold mx-auto mb-4">
+                        2
+                    </div>
+                    <h3 class="serif-heading text-lg text-white mb-2">Meet Your Teacher 1-on-1</h3>
+                    <p class="text-sm text-brand-textMuted leading-relaxed">
+                        Interactive session with direct posture and pranayama corrections (Online HD video or In-Person).
+                    </p>
+                </div>
+
+                <div class="bg-brand-card/40 border border-brand-border p-6 rounded-xl relative text-center">
+                    <div class="w-12 h-12 rounded-full bg-brand-copper/10 border border-brand-copper/30 text-brand-copper flex items-center justify-center font-serif text-lg font-bold mx-auto mb-4">
+                        3
+                    </div>
+                    <h3 class="serif-heading text-lg text-white mb-2">Receive Your Plan</h3>
+                    <p class="text-sm text-brand-textMuted leading-relaxed">
+                        Walk away with clear, custom daily routines, practice checklists, and personalized diet guidance.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Frequently Asked Questions (Accordion) -->
+        <section id="faq" class="py-20 bg-black/20 border-y border-brand-border/40">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-14">
+                    <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
+                        Frequently Asked Questions
+                    </h2>
+                    <p class="text-brand-textMuted text-sm">
+                        Everything you need to know about the guidance sessions.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden">
+                        <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium hover:bg-brand-border/20 transition">
+                            <span class="serif-heading text-base">Do I need to be an advanced practitioner to apply for personal guidance?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-copper transition-transform duration-200"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-5 text-sm text-brand-textMuted leading-relaxed">
+                            No. Whether you have been practicing for 6 months or 10 years, guidance is customized to your current proficiency and bodily needs.
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden">
+                        <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium hover:bg-brand-border/20 transition">
+                            <span class="serif-heading text-base">What is the difference between Online and Offline (In-Person) sessions?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-copper transition-transform duration-200"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-5 text-sm text-brand-textMuted leading-relaxed">
+                            Online sessions are conducted via high-definition video calls with real-time posture corrections. In-person sessions take place at our designated center with direct physical alignment.
+                        </div>
+                    </div>
+
+                    <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden">
+                        <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium hover:bg-brand-border/20 transition">
+                            <span class="serif-heading text-base">How do I prepare for my first session?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-copper transition-transform duration-200"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-5 text-sm text-brand-textMuted leading-relaxed">
+                            Upon confirmation, you will receive a pre-session questionnaire to document your daily routine, practice sequence, and health history.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Practitioner Stories (Testimonial Cards Grid) -->
+        <section id="testimonials" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <div class="text-xs font-semibold text-brand-copper uppercase tracking-widest mb-2">Practitioner Voices</div>
+                <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
+                    Stories from Fellow Seekers
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-brand-card border border-brand-border p-6 rounded-xl flex flex-col justify-between card-glow">
+                    <p class="text-sm text-gray-300 italic mb-6 leading-relaxed">
+                        "The micro-corrections in my Surya Kriya posture completely eliminated my lower back strain. I can now sit in meditative stillness effortlessly for over an hour."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-copper/20 flex items-center justify-center font-serif text-brand-copper font-bold">
+                            AR
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold text-white">Ananya Rao</div>
+                            <div class="text-xs text-brand-textMuted">Practitioner (3 Years)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card border border-brand-border p-6 rounded-xl flex flex-col justify-between card-glow">
+                    <p class="text-sm text-gray-300 italic mb-6 leading-relaxed">
+                        "Understanding dietary timings and sattvic principles transformed my morning energy. My breath retention doubled naturally within two weeks."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-copper/20 flex items-center justify-center font-serif text-brand-copper font-bold">
+                            MK
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold text-white">Markus Keller</div>
+                            <div class="text-xs text-brand-textMuted">Practitioner (5 Years)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-card border border-brand-border p-6 rounded-xl flex flex-col justify-between card-glow">
+                    <p class="text-sm text-gray-300 italic mb-6 leading-relaxed">
+                        "Having direct answers to long-standing doubts gave me the clarity I needed. The 90-day spiritual roadmap keeps my daily discipline laser-focused."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-copper/20 flex items-center justify-center font-serif text-brand-copper font-bold">
+                            VS
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold text-white">Vikram Sharma</div>
+                            <div class="text-xs text-brand-textMuted">Practitioner (2 Years)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Lead Capture Form Section -->
+        <section id="request-session" class="py-20 bg-black/40 border-t border-brand-border/40">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6">
+                <!-- Dynamic Slot Availability Banner -->
+                <div class="mb-6 bg-gradient-to-r from-brand-copper/20 via-brand-copper/10 to-brand-copper/20 border border-brand-copper/40 p-3.5 rounded-xl text-center flex items-center justify-center gap-2.5 animate-pulse">
+                    <i data-lucide="clock" class="w-4 h-4 text-brand-copper flex-shrink-0"></i>
+                    <span class="text-xs sm:text-sm font-semibold text-amber-200">
+                        Limited Capacity: Only <span class="underline text-white font-bold">3 guidance slots</span> remaining for this month
+                    </span>
+                </div>
+
+                <div class="bg-brand-card border border-brand-border p-8 sm:p-10 rounded-2xl shadow-2xl">
+                    <div class="text-center mb-8">
+                        <h2 class="serif-heading text-2xl sm:text-3xl text-white mb-2">
+                            Request Your Personal Guidance Session
+                        </h2>
+                        <p class="text-sm text-brand-textMuted">
+                            Fill in your details below to schedule your pre-guidance assessment.
+                        </p>
+                    </div>
+
+                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('Request submitted successfully!');">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">Full Name *</label>
+                                <input type="text" required placeholder="Siddharth Mehta" class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-copper">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">Email Address *</label>
+                                <input type="email" required placeholder="siddharth@example.com" class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-copper">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">City & Country *</label>
+                                <input type="text" required placeholder="Bengaluru, India" class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-copper">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">Practice Duration *</label>
+                                <select class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-brand-copper">
+                                    <option>&lt; 1 Year</option>
+                                    <option>1 - 3 Years</option>
+                                    <option>3 - 5 Years</option>
+                                    <option>5+ Years</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">Preferred Module *</label>
+                                <select id="preferred-module-select" class="w-full bg-brand-bg border border-brand-border rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-brand-copper">
+                                    <option>Foundation 2-Day</option>
+                                    <option>Intensive 3-Day</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">Session Mode *</label>
+                                <select class="w-full bg-brand-bg border border-brand-border rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-brand-copper">
+                                    <option>Online Video</option>
+                                    <option>In-Person (Offline)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-gray-300 mb-2">Preferred Time Slot *</label>
+                                <select class="w-full bg-brand-bg border border-brand-border rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-brand-copper">
+                                    <option>Morning (6 AM - 9 AM)</option>
+                                    <option>Afternoon (12 PM - 3 PM)</option>
+                                    <option>Evening (5 PM - 8 PM)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-2">Current Yoga Practices</label>
+                            <textarea rows="2" placeholder="List your current practices (e.g., Surya Kriya, Yogasanas, Pranayama)..." class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-copper"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-medium text-gray-300 mb-2">Specific Concerns or Primary Goals</label>
+                            <textarea rows="3" placeholder="Specify main obstacles, posture challenges, or meditation doubts..." class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-copper"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-copper hover:bg-brand-copperHover text-white font-semibold py-3.5 rounded-lg text-sm transition shadow-lg shadow-brand-copper/20">
+                            Submit Session Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Mobile Floating Action Button (FAB) Bar -->
+    <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-[#121316]/95 backdrop-blur-lg border-t border-brand-border p-3">
+        <a href="#request-session" class="flex items-center justify-center gap-2 w-full bg-brand-copper hover:bg-brand-copperHover text-white py-3 rounded-xl font-semibold text-sm shadow-lg shadow-brand-copper/30 transition">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span>Book Guidance Session</span>
+        </a>
+    </div>
+<!-- 10. Footer Section -->
+<footer class="bg-black/80 border-t border-brand-border/60 py-16 text-xs text-brand-textMuted">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <!-- Left Column: Branding & Quote -->
+<div class="md:col-span-2 space-y-4">
+    <a href="#" class="inline-block">
+        <img src="img/logo.png" alt="andnowyoga logo" class="h-16 w-auto object-contain">
+    </a>
+                <p class="max-w-sm leading-relaxed text-gray-400">
+                    Refining sadhana through structured guidance and personal direction for serious yoga practitioners.
+                </p>
+                <p class="italic text-gray-500">
+                    "Spiritual growth is not about adding more practices; it is about refining what you already do until it opens the inner door."
+                </p>
+
+                <!-- Social Media Links Section -->
+                <div class="pt-2">
+                    <h4 class="serif-heading text-xs text-white uppercase tracking-wider mb-3">Connect With Us</h4>
+                    <div class="flex items-center gap-3">
+                        <!-- Facebook -->
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-brand-copper hover:border-brand-copper/50 hover:bg-brand-copper/10 transition duration-200">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <!-- Twitter / X -->
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="w-9 h-9 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-brand-copper hover:border-brand-copper/50 hover:bg-brand-copper/10 transition duration-200">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.936 9.936 0 0024 4.59z"/></svg>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-9 h-9 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-brand-copper hover:border-brand-copper/50 hover:bg-brand-copper/10 transition duration-200">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Column: Platform Links -->
+            <div>
+                <h4 class="serif-heading text-sm text-white mb-4 uppercase tracking-wider">Platform</h4>
+                <ul class="space-y-2.5">
+                    <li><a href="#guidance" class="hover:text-brand-copper transition">1:1 Guidance</a></li>
+                    <li><a href="#teacher" class="hover:text-brand-copper transition">Teacher Lineage</a></li>
+                    <li><a href="#quiz" class="hover:text-brand-copper transition">Diagnostic Quiz</a></li>
+                    <li><a href="#modules" class="hover:text-brand-copper transition">Modules</a></li>
+                </ul>
+            </div>
+
+            <!-- Right Column: Contact -->
+            <div>
+                <h4 class="serif-heading text-sm text-white mb-4 uppercase tracking-wider">Contact & Socials</h4>
+                <ul class="space-y-2.5">
+                    <li><a href="mailto:info@andnowyoga.org" class="hover:text-brand-copper transition">info@andnowyoga.org</a></li>
+                    <li><a href="tel:+919755701608" class="hover:text-brand-copper transition">+91 97557-01608</a></li>
+                    <li class="pt-2 border-t border-brand-border/40">
+                        <a href="https://wa.me/919755701608" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-brand-copper transition">
+                            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-brand-copper"></i>
+                            <span>WhatsApp Us</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer Bottom Bar -->
+        <div class="border-t border-brand-border/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 andnowyoga. All rights reserved. Made in Bharat.</p>
+            <div class="flex items-center gap-4 text-gray-500">
+                <span>Authentic Classical Lineage</span>
+                <span>•</span>
+                <span>Hatha Yoga Sadhana</span>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- JavaScript Interactivity -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // FAQ Accordion Toggle
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const answer = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                answer.classList.toggle('hidden');
+                if (answer.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Diagnostic Quiz Logic
+        let selectedModuleType = '2-day';
+
+        function nextQuizStep(currentStep, choice) {
+            document.getElementById(`quiz-step-${currentStep}`).classList.add('hidden');
+            document.getElementById(`quiz-step-${currentStep + 1}`).classList.remove('hidden');
+        }
+
+        function finishQuiz(moduleType) {
+            document.getElementById('quiz-step-3').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+
+            const title = document.getElementById('result-title');
+            const desc = document.getElementById('result-desc');
+            const select = document.getElementById('preferred-module-select');
+
+            if (moduleType === '3-day') {
+                title.textContent = 'Intensive 3-Day Spiritual Overhaul';
+                desc.textContent = 'Your answers indicate a need for deep biomechanical audit, breath retention work, and a 90-day structured spiritual roadmap.';
+                if (select) select.value = 'Intensive 3-Day';
+            } else {
+                title.textContent = 'Foundation 2-Day Module';
+                desc.textContent = 'Your answers suggest a targeted diagnostic check-up will resolve your primary alignment challenges and refine your daily practice routine.';
+                if (select) select.value = 'Foundation 2-Day';
+            }
+        }
+    </script>
+</body>
+</html>
