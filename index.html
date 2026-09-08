@@ -21,6 +21,14 @@
     --sand: #d4b483;
     --sand-glow: rgba(212, 180, 131, 0.25);
     --sand-dim: #967d58;
+    
+    /* Light Theme Variables for Nav & Footer */
+    --nav-bg: #faf8f5;
+    --footer-bg: #f4ebd9;
+    --dark-text: #141517;
+    --dark-muted: #524d46;
+    --border-light: rgba(20, 21, 23, 0.12);
+    
     --rule: rgba(244, 235, 217, 0.12);
     --rule-strong: rgba(212, 180, 131, 0.3);
     --serif: "Fraunces", serif;
@@ -113,75 +121,56 @@
     border-bottom-color: var(--sand-dim);
     animation: spin 2s linear infinite reverse;
   }
-  .preloader-lotus {
-    width: 32px;
-    height: 32px;
-    color: var(--sand);
-    animation: pulse-breath 3s ease-in-out infinite;
-  }
-  .preloader-title {
-    margin-top: 24px;
-    font-family: var(--serif);
-    font-size: 20px;
-    letter-spacing: 0.08em;
-    color: var(--ivory);
-  }
-  .preloader-title em { font-style: italic; color: var(--sand); }
   .preloader-sub {
     font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--sand-dim);
-    margin-top: 8px;
+    margin-top: 16px;
   }
 
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  @keyframes pulse-breath {
-    0%, 100% { transform: scale(0.9); opacity: 0.5; }
-    50% { transform: scale(1.15); opacity: 1; }
-  }
 
-  /* ---------- NAV ---------- */
+  /* ---------- CREAM NAVBAR ---------- */
   header.nav {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 24px 0;
+    padding: 18px 0;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   header.nav.scrolled {
-    padding: 14px 0;
-    background: rgba(20, 21, 23, 0.88);
+    padding: 12px 0;
+    background: rgba(250, 248, 245, 0.96);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--rule);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
   .nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 24px;
   }
   .brand {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-family: var(--serif);
-    font-size: 21px;
-    letter-spacing: 0.02em;
-    color: var(--ivory);
+    text-decoration: none;
   }
-  .brand-icon {
-    width: 28px;
-    height: 28px;
-    color: var(--sand);
+  .brand img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    mix-blend-mode: multiply;
   }
-  .brand em { font-style: italic; color: var(--sand); }
   
   .nav-links {
     display: flex;
@@ -191,12 +180,13 @@
   }
   .nav-links a {
     font-size: 14px;
-    letter-spacing: 0.04em;
-    color: var(--ivory-dim);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--dark-muted);
     position: relative;
   }
   .nav-links a:hover, .nav-links a.active {
-    color: var(--ivory);
+    color: var(--dark-text);
   }
   .nav-links a::after {
     content: "";
@@ -204,8 +194,8 @@
     bottom: -4px;
     left: 0;
     width: 0;
-    height: 1px;
-    background: var(--sand);
+    height: 2px;
+    background: var(--sand-dim);
     transition: width 0.3s ease;
   }
   .nav-links a:hover::after, .nav-links a.active::after {
@@ -220,36 +210,37 @@
 
   .btn-nav {
     font-size: 13.5px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.04em;
     padding: 10px 22px;
-    border: 1px solid var(--rule-strong);
-    color: var(--ivory);
+    border: 1px solid var(--sand-dim);
+    color: var(--dark-text);
     border-radius: 2px;
-    background: rgba(212, 180, 131, 0.05);
+    background: transparent;
+    transition: all 0.3s ease;
   }
   .btn-nav:hover {
-    border-color: var(--sand);
-    color: var(--sand);
-    background: rgba(212, 180, 131, 0.12);
+    border-color: var(--dark-text);
+    color: #ffffff;
+    background: var(--dark-text);
   }
 
   .mobile-toggle {
     display: none;
     background: transparent;
     border: none;
-    color: var(--ivory);
+    color: var(--dark-text);
     cursor: pointer;
     padding: 8px;
   }
 
-  /* Mobile Drawer */
+  /* ---------- MOBILE MENU DRAWER WITH CROSS BAR ---------- */
   .mobile-menu {
     position: fixed;
     inset: 0;
-    background: rgba(17, 18, 20, 0.98);
+    background: #faf8f5;
     backdrop-filter: blur(16px);
-    z-index: 99;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -268,25 +259,41 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 28px;
   }
   .mobile-menu a {
     font-family: var(--serif);
-    font-size: 26px;
-    color: var(--ivory-dim);
+    font-size: 28px;
+    color: var(--dark-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
   }
   .mobile-menu a:hover, .mobile-menu a.active {
-    color: var(--sand);
+    color: var(--sand-dim);
   }
+
   .mobile-menu-close {
     position: absolute;
     top: 24px;
     right: 24px;
-    background: transparent;
-    border: none;
-    color: var(--ivory);
-    font-size: 32px;
+    background: rgba(20, 21, 23, 0.06);
+    border: 1px solid rgba(20, 21, 23, 0.15);
+    color: var(--dark-text);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    z-index: 10000;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .mobile-menu-close:hover {
+    background: var(--dark-text);
+    color: #ffffff;
+    transform: rotate(90deg);
   }
 
   @media (max-width: 900px) {
@@ -431,34 +438,7 @@
     box-shadow: none;
     transform: translateY(-2px);
   }
-  .btn-outline {
-    background: transparent;
-    color: var(--ivory);
-    border: 1px solid var(--rule-strong);
-    box-shadow: none;
-  }
-  .btn-outline:hover {
-    border-color: var(--sand);
-    color: var(--sand);
-    transform: translateY(-2px);
-  }
-  
-  .textlink {
-    font-size: 14.5px;
-    color: var(--ivory-dim);
-    text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
-    padding-bottom: 3px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .textlink:hover {
-    color: var(--sand);
-    border-color: var(--sand);
-  }
 
-  /* Floating Sticky CTA Button (Bottom Right) */
   .sticky-float-btn {
     position: fixed;
     bottom: 24px;
@@ -504,9 +484,7 @@
     padding: 42px 34px;
     transition: background 0.3s ease, transform 0.3s ease;
   }
-  .card:hover {
-    background: var(--brown-light);
-  }
+  .card:hover { background: var(--brown-light); }
   .card .card-num {
     font-family: var(--serif);
     font-style: italic;
@@ -768,11 +746,12 @@
     border-radius: 2px;
   }
 
-  /* ---------- FOOTER ---------- */
+  /* ---------- CREAM / WHITE FOOTER ---------- */
   footer.footer-premium {
-    background: var(--charcoal-light);
-    border-top: 1px solid var(--rule);
-    padding: 100px 0 40px;
+    background: var(--footer-bg);
+    color: var(--dark-text);
+    border-top: 1px solid rgba(20, 21, 23, 0.15);
+    padding: 90px 0 40px;
     position: relative;
   }
   
@@ -780,7 +759,7 @@
     display: grid;
     grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
     gap: 48px;
-    margin-bottom: 80px;
+    margin-bottom: 70px;
   }
   @media (max-width: 960px) {
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -792,10 +771,14 @@
   .footer-brand .brand {
     font-size: 24px;
     margin-bottom: 18px;
+    color: var(--dark-text);
+  }
+  .footer-brand .brand img {
+    mix-blend-mode: multiply;
   }
   .footer-brand p {
     font-size: 15px;
-    color: var(--ivory-dim);
+    color: var(--dark-muted);
     line-height: 1.7;
     max-width: 320px;
     margin-bottom: 24px;
@@ -804,9 +787,10 @@
   .footer-col-title {
     font-family: var(--serif);
     font-size: 18px;
-    color: var(--ivory);
+    color: var(--dark-text);
     margin-bottom: 22px;
     letter-spacing: 0.02em;
+    font-weight: 500;
   }
 
   .footer-links {
@@ -817,11 +801,12 @@
   }
   .footer-links a {
     font-size: 14.5px;
-    color: var(--ivory-dim);
+    color: var(--dark-muted);
     transition: color 0.25s ease;
   }
   .footer-links a:hover {
-    color: var(--sand);
+    color: var(--dark-text);
+    text-decoration: underline;
   }
 
   .footer-contact-item {
@@ -834,24 +819,25 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--sand);
+    color: var(--sand-dim);
+    font-weight: 600;
   }
   .footer-contact-item .c-val {
     font-size: 14.5px;
-    color: var(--ivory);
+    color: var(--dark-text);
   }
 
   .footer-quote-box {
-    background: rgba(20, 21, 23, 0.6);
-    border: 1px solid var(--rule);
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(20, 21, 23, 0.1);
     padding: 24px;
-    border-radius: 2px;
+    border-radius: 4px;
   }
   .footer-quote-box p {
     font-family: var(--serif);
     font-style: italic;
     font-size: 15px;
-    color: var(--ivory-dim);
+    color: var(--dark-muted);
     line-height: 1.6;
     margin-bottom: 12px;
   }
@@ -859,12 +845,13 @@
     font-size: 12px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--sand-dim);
+    font-weight: 600;
   }
 
   .footer-bottom {
     padding-top: 36px;
-    border-top: 1px solid var(--rule);
+    border-top: 1px solid rgba(20, 21, 23, 0.12);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -873,7 +860,7 @@
   }
   .footer-bottom p {
     font-size: 13.5px;
-    color: var(--ivory-dim);
+    color: var(--dark-muted);
   }
 
   .back-to-top {
@@ -883,7 +870,8 @@
     font-size: 13px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--sand);
+    color: var(--dark-text);
+    font-weight: 600;
     cursor: pointer;
     background: transparent;
     border: none;
@@ -909,100 +897,9 @@
   }
 
   a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-    outline: 2px solid var(--sand);
+    outline: 2px solid var(--sand-dim);
     outline-offset: 3px;
   }
-  /* ---------- NAV FIXES ---------- */
-header.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 16px 0;
-  background: rgba(20, 21, 23, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--rule);
-}
-
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-/* Brand Logo Image Adjustment */
-.brand {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.brand img {
-  height: 48px; /* Standardize header logo height */
-  width: auto;
-  object-fit: contain;
-  display: block;
-  /* Filters out harsh dark background edges if the logo image is dark/untrimmed */
-  mix-blend-mode: screen; 
-}
-
-/* Navigation Links */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links a {
-  font-family: var(--sans);
-  font-size: 14px;
-  letter-spacing: 0.04em;
-  color: var(--ivory-dim);
-  text-decoration: none;
-  white-space: nowrap;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover, 
-.nav-links a.active {
-  color: var(--ivory);
-}
-
-/* Button & Actions Styling */
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.btn-nav {
-  font-family: var(--sans);
-  font-size: 13.5px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  padding: 10px 22px;
-  border: 1px solid var(--rule-strong);
-  color: var(--sand);
-  border-radius: 2px;
-  background: rgba(212, 180, 131, 0.05);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-}
-
-.btn-nav:hover {
-  border-color: var(--sand);
-  color: #141517;
-  background: var(--sand);
-  box-shadow: 0 4px 15px rgba(212, 180, 131, 0.2);
-}
 </style>
 </head>
 <body>
@@ -1012,7 +909,7 @@ header.nav {
   <div class="preloader-mandala">
     <div class="preloader-ring"></div>
     <div class="preloader-ring"></div>
-    <img src="img/logo.png" alt="" srcset="">
+    <img src="img/logo.png" alt="And Now Yoga">
   </div>
   <div class="preloader-sub">A Conversation With Ram Sahu</div>
 </div>
@@ -1022,7 +919,7 @@ header.nav {
   <div class="wrap">
     <div class="nav-inner">
       <a href="#" class="brand">
-        <img src="img/logo.png" alt="" srcset="">
+        <img src="img/logo.png" alt="And Now Yoga">
       </a>
 
       <ul class="nav-links">
@@ -1047,16 +944,21 @@ header.nav {
   </div>
 </header>
 
-<!-- MOBILE MENU DRAWER -->
+<!-- MOBILE MENU DRAWER WITH CROSS BUTTON -->
 <div class="mobile-menu" id="mobile-menu">
-  <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
+  <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close Menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
   <ul>
     <li><a href="#about" class="mobile-link">Overview</a></li>
     <li><a href="#topics" class="mobile-link">Topics</a></li>
     <li><a href="#how-it-works" class="mobile-link">Process</a></li>
     <li><a href="#teacher" class="mobile-link">Ram Sahu</a></li>
     <li><a href="#faq" class="mobile-link">FAQ</a></li>
-    <li><a href="#book" class="mobile-link" style="color:var(--sand);">Book Session (₹800)</a></li>
+    <li><a href="#book" class="mobile-link" style="color:var(--sand-dim); font-weight:600;">Book Session (₹800)</a></li>
   </ul>
 </div>
 
@@ -1400,16 +1302,16 @@ header.nav {
   </div>
 </section>
 
-<!-- PREMIUM FOOTER -->
+<!-- CREAM / WHITE PREMIUM FOOTER -->
 <footer class="footer-premium">
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="#" class="brand">
-          <img src="img/logo.png" alt="" srcset="">
+          <img src="img/logo.png" alt="And Now Yoga">
         </a>
         <p>A personal space for quiet guidance and genuine conversations around Classical Hatha Yoga practice.</p>
-        <div style="font-size:13px;color:var(--sand);">
+        <div style="font-size:13px;color:var(--sand-dim);font-weight:600;">
           Guided by Ram Sahu · Certified Isha Hatha Yoga Teacher
         </div>
       </div>
