@@ -1,947 +1,1598 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>andnowyoga — Classical Hatha Yoga Personal Guidance</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Google Fonts for Serif & Sans Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            bg: '#121316',
-                            card: '#1A1C23',
-                            border: '#2D323A',
-                            copper: '#D96B27',
-                            copperHover: '#C25A1C',
-                            textMuted: '#9CA3AF'
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #121316;
-            color: #E5E7EB;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .serif-heading {
-            font-family: 'Cinzel', serif;
-        }
-        .bg-radial-gradient {
-            background: radial-gradient(circle at 50% 0%, rgba(217, 107, 39, 0.12) 0%, rgba(18, 19, 22, 0) 70%);
-        }
-        .card-glow {
-            transition: all 0.3s ease;
-        }
-        .card-glow:hover {
-            border-color: rgba(217, 107, 39, 0.4);
-            box-shadow: 0 0 25px -5px rgba(217, 107, 39, 0.15);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>And Now Yoga — Personal Classical Hatha Yoga Guidance with Ram Sahu</title>
+<meta name="description" content="A personal, one-to-one guidance session on your Classical Hatha Yoga practice with Ram Sahu, Isha Hatha Yoga Teacher.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --charcoal: #141517;
+    --charcoal-light: #1c1e21;
+    --brown: #211a14;
+    --brown-light: #2c231c;
+    --forest: #1e281d;
+    --forest-deep: #141c13;
+    --ivory: #f4ebd9;
+    --ivory-dim: #c9bfaf;
+    --sand: #d4b483;
+    --sand-glow: rgba(212, 180, 131, 0.25);
+    --sand-dim: #967d58;
+    --rule: rgba(244, 235, 217, 0.12);
+    --rule-strong: rgba(212, 180, 131, 0.3);
+    --serif: "Fraunces", serif;
+    --sans: "Inter", sans-serif;
+    --maxw: 1180px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body {
+    background: var(--charcoal);
+    color: var(--ivory);
+    font-family: var(--sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; transition: all 0.3s ease; }
+  ::selection { background: var(--sand); color: var(--charcoal); }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 640px) { .wrap { padding: 0 20px; } }
+
+  .label {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sand);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .label::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: inline-block;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    color: var(--ivory);
+  }
+
+  .rule { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+  /* ---------- PRELOADER ---------- */
+  #preloader {
+    position: fixed;
+    inset: 0;
+    background: #111214;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+  }
+  #preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .preloader-mandala {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .preloader-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(212, 180, 131, 0.15);
+    border-top-color: var(--sand);
+    border-radius: 50%;
+    animation: spin 3s linear infinite;
+  }
+  .preloader-ring:nth-child(2) {
+    inset: 12px;
+    border-top-color: transparent;
+    border-bottom-color: var(--sand-dim);
+    animation: spin 2s linear infinite reverse;
+  }
+  .preloader-lotus {
+    width: 32px;
+    height: 32px;
+    color: var(--sand);
+    animation: pulse-breath 3s ease-in-out infinite;
+  }
+  .preloader-title {
+    margin-top: 24px;
+    font-family: var(--serif);
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    color: var(--ivory);
+  }
+  .preloader-title em { font-style: italic; color: var(--sand); }
+  .preloader-sub {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sand-dim);
+    margin-top: 8px;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes pulse-breath {
+    0%, 100% { transform: scale(0.9); opacity: 0.5; }
+    50% { transform: scale(1.15); opacity: 1; }
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 24px 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  header.nav.scrolled {
+    padding: 14px 0;
+    background: rgba(20, 21, 23, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--serif);
+    font-size: 21px;
+    letter-spacing: 0.02em;
+    color: var(--ivory);
+  }
+  .brand-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--sand);
+  }
+  .brand em { font-style: italic; color: var(--sand); }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--ivory-dim);
+    position: relative;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--ivory);
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--sand);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .btn-nav {
+    font-size: 13.5px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 10px 22px;
+    border: 1px solid var(--rule-strong);
+    color: var(--ivory);
+    border-radius: 2px;
+    background: rgba(212, 180, 131, 0.05);
+  }
+  .btn-nav:hover {
+    border-color: var(--sand);
+    color: var(--sand);
+    background: rgba(212, 180, 131, 0.12);
+  }
+
+  .mobile-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--ivory);
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  /* Mobile Drawer */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 18, 20, 0.98);
+    backdrop-filter: blur(16px);
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+  }
+  .mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .mobile-menu ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .mobile-menu a {
+    font-family: var(--serif);
+    font-size: 26px;
+    color: var(--ivory-dim);
+  }
+  .mobile-menu a:hover, .mobile-menu a.active {
+    color: var(--sand);
+  }
+  .mobile-menu-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: transparent;
+    border: none;
+    color: var(--ivory);
+    font-size: 32px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .mobile-toggle { display: block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    padding-top: 120px;
+  }
+  .hero-media { position: absolute; inset: 0; z-index: 0; }
+  .hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: saturate(0.85) brightness(0.55);
+    transform: scale(1.02);
+    transition: transform 10s ease;
+  }
+  .hero:hover .hero-media img {
+    transform: scale(1.06);
+  }
+  .hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(20, 21, 23, 0.7) 0%,
+      rgba(20, 21, 23, 0.4) 40%,
+      rgba(20, 21, 23, 0.95) 90%,
+      rgba(20, 21, 23, 1) 100%
+    );
+  }
+
+  .ambient-glow {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--sand-glow) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    filter: blur(60px);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 0 100px;
+    width: 100%;
+  }
+  .hero-inner { max-width: 820px; }
+  .hero .label { margin-bottom: 24px; }
+  
+  .hero h1 {
+    font-size: clamp(40px, 6.2vw, 72px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 24px;
+  }
+  .hero h1 span.highlight {
+    font-style: italic;
+    color: var(--sand);
+    position: relative;
+  }
+  
+  .hero p.sub {
+    font-size: clamp(17px, 2vw, 20px);
+    line-height: 1.7;
+    color: var(--ivory-dim);
+    max-width: 580px;
+    margin-bottom: 32px;
+  }
+
+  .hero-badge-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(28, 30, 33, 0.7);
+    border: 1px solid var(--rule-strong);
+    padding: 12px 20px;
+    border-radius: 4px;
+    backdrop-filter: blur(8px);
+    margin-bottom: 38px;
+  }
+  .hero-badge-card .badge-icon {
+    color: var(--sand);
+    flex-shrink: 0;
+  }
+  .hero-badge-card .badge-text {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ivory);
+  }
+  .hero-badge-card .badge-text span {
+    display: block;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--sand);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .hero .actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 16px 36px;
+    background: var(--sand);
+    color: #1a1510;
+    text-decoration: none;
+    border: 1px solid var(--sand);
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(212, 180, 131, 0.2);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn:hover {
+    background: transparent;
+    color: var(--sand);
+    box-shadow: none;
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--ivory);
+    border: 1px solid var(--rule-strong);
+    box-shadow: none;
+  }
+  .btn-outline:hover {
+    border-color: var(--sand);
+    color: var(--sand);
+    transform: translateY(-2px);
+  }
+  
+  .textlink {
+    font-size: 14.5px;
+    color: var(--ivory-dim);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule-strong);
+    padding-bottom: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .textlink:hover {
+    color: var(--sand);
+    border-color: var(--sand);
+  }
+
+  /* Floating Sticky CTA Button (Bottom Right) */
+  .sticky-float-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 15px rgba(212, 180, 131, 0.3);
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 120px 0; position: relative; }
+  @media (max-width: 768px) { section { padding: 80px 0; } }
+
+  .bg-charcoal { background: var(--charcoal); }
+  .bg-brown { background: var(--brown); }
+  .bg-forest { background: var(--forest); }
+
+  .section-head { max-width: 680px; margin-bottom: 64px; }
+  .section-head .label { margin-bottom: 18px; }
+  .section-head h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.2; }
+
+  .prose { max-width: 600px; }
+  .prose p {
+    font-size: 18px;
+    line-height: 1.85;
+    color: var(--ivory-dim);
+    margin-bottom: 22px;
+  }
+  .prose p.lead { color: var(--ivory); font-size: 21px; font-family: var(--serif); font-style: italic; }
+
+  /* ---------- TOPIC CARDS ---------- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  @media (max-width: 860px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
+  
+  .card {
+    background: var(--brown);
+    padding: 42px 34px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .card:hover {
+    background: var(--brown-light);
+  }
+  .card .card-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--sand);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .card h3 { font-size: 22px; font-weight: 400; margin-bottom: 14px; color: var(--ivory); }
+  .card p { font-size: 15.5px; line-height: 1.7; color: var(--ivory-dim); }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 860px) { .process { grid-template-columns: repeat(2, 1fr); gap: 40px; } }
+  @media (max-width: 560px) { .process { grid-template-columns: 1fr; } }
+  
+  .step {
+    position: relative;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .step .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--sand);
+    margin-bottom: 16px;
+  }
+  .step h3 { font-size: 20px; font-weight: 400; margin-bottom: 12px; }
+  .step p { font-size: 15px; color: var(--ivory-dim); line-height: 1.7; }
+
+  /* ---------- SESSION CARD ---------- */
+  .session-card {
+    border: 1px solid var(--rule-strong);
+    background: linear-gradient(165deg, var(--brown-light), var(--charcoal));
+    padding: 64px 48px;
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  }
+  @media (max-width: 560px) { .session-card { padding: 44px 24px; } }
+  .session-card .price {
+    font-family: var(--serif);
+    font-size: 64px;
+    color: var(--ivory);
+    margin: 12px 0 4px;
+    line-height: 1;
+  }
+  .session-card .dur { font-size: 13px; letter-spacing: 0.12em; color: var(--sand); text-transform: uppercase; }
+  .session-card .divider { width: 50px; height: 1px; background: var(--rule-strong); margin: 32px auto; }
+  .session-card .with { font-size: 14px; color: var(--ivory-dim); margin-bottom: 6px; }
+  .session-card .teacher-name { font-family: var(--serif); font-size: 24px; margin-bottom: 4px; }
+  .session-card .teacher-role { font-size: 13.5px; color: var(--sand); margin-bottom: 36px; }
+
+  /* ---------- TEACHER ---------- */
+  .teacher-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 64px;
+    align-items: center;
+  }
+  @media (max-width: 860px) { .teacher-grid { grid-template-columns: 1fr; gap: 40px; } }
+  
+  .portrait-frame {
+    aspect-ratio: 4/5;
+    background: linear-gradient(150deg, var(--forest), var(--charcoal));
+    border: 1px solid var(--rule-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait-frame svg { width: 42%; opacity: 0.6; color: var(--sand); }
+  .portrait-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px 22px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--ivory-dim);
+    background: linear-gradient(to top, rgba(17,16,14,0.85), transparent);
+  }
+  
+  .teacher-copy p { font-size: 18px; line-height: 1.85; color: var(--ivory-dim); margin-bottom: 22px; }
+  .teacher-copy p.quote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 24px;
+    color: var(--ivory);
+    line-height: 1.5;
+    margin-bottom: 28px;
+    padding-left: 20px;
+    border-left: 2px solid var(--sand);
+  }
+  .credentials { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; }
+  .credential {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .credential:first-child { border-top: none; padding-top: 0; }
+  .credential .cred-num { font-family: var(--serif); font-style: italic; color: var(--sand); font-size: 18px; min-width: 110px; }
+  .credential .cred-text { font-size: 15px; color: var(--ivory-dim); }
+
+  /* ---------- PHILOSOPHY ---------- */
+  .philosophy { text-align: center; padding: 150px 0; }
+  @media (max-width: 768px) { .philosophy { padding: 90px 0; } }
+  .philosophy .wrap { max-width: 860px; }
+  .philosophy h2 { font-size: clamp(30px, 4.8vw, 48px); line-height: 1.35; font-weight: 400; }
+  .philosophy .body-copy {
+    margin-top: 36px;
+    max-width: 600px;
+    margin-left: auto; margin-right: auto;
+    font-size: 17.5px;
+    line-height: 1.9;
+    color: var(--ivory-dim);
+  }
+
+  /* ---------- FOR YOU ---------- */
+  .foryou-list { display: flex; flex-direction: column; max-width: 600px; }
+  .foryou-list p {
+    font-size: 19.5px;
+    color: var(--ivory-dim);
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .foryou-list p::before {
+    content: "—";
+    color: var(--sand);
+  }
+  .foryou-list p:first-child { padding-top: 0; }
+  .closing-line {
+    margin-top: 52px;
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 52px);
+    font-style: italic;
+    color: var(--sand);
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  @media (max-width: 860px) { .testimonials { grid-template-columns: 1fr; } }
+  .testimonial {
+    background: var(--charcoal);
+    padding: 44px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 240px;
+  }
+  .testimonial .quote-mark { font-family: var(--serif); font-size: 42px; color: var(--sand-dim); line-height: 1; margin-bottom: 14px; }
+  .testimonial p.qtext { font-size: 16px; color: var(--ivory-dim); line-height: 1.75; font-style: italic; }
+  .testimonial .who { margin-top: 28px; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sand); }
+
+  /* ---------- FAQ ---------- */
+  .faq-container { max-width: 800px; }
+  .faq-item { border-bottom: 1px solid var(--rule); }
+  .faq-item:first-child { border-top: 1px solid var(--rule); }
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    color: var(--ivory);
+    font-family: var(--serif);
+    font-size: 20px;
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .faq-q:hover { color: var(--sand); }
+  .faq-q .plus {
+    font-family: var(--sans);
+    font-size: 22px;
+    color: var(--sand);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    font-weight: 300;
+  }
+  .faq-item.open .faq-q .plus { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .faq-a-inner { padding-bottom: 28px; max-width: 680px; }
+  .faq-a-inner p { font-size: 16px; line-height: 1.8; color: var(--ivory-dim); }
+
+  /* ---------- FORM ---------- */
+  #book { background: var(--brown); }
+  .form-shell {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
+  }
+  @media (max-width: 860px) { .form-shell { grid-template-columns: 1fr; gap: 40px; } }
+  
+  .field { margin-bottom: 28px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .field input, .field textarea {
+    width: 100%;
+    background: rgba(20, 21, 23, 0.4);
+    border: 1px solid var(--rule-strong);
+    border-radius: 2px;
+    color: var(--ivory);
+    font-family: var(--sans);
+    font-size: 16px;
+    padding: 14px 16px;
+    outline: none;
+    transition: all 0.25s ease;
+  }
+  .field input:focus, .field textarea:focus {
+    border-color: var(--sand);
+    background: rgba(20, 21, 23, 0.8);
+    box-shadow: 0 0 0 1px var(--sand);
+  }
+  .field textarea { resize: vertical; min-height: 100px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 480px) { .field-row { grid-template-columns: 1fr; } }
+  
+  #form-msg {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(212, 180, 131, 0.1);
+    border: 1px solid var(--sand);
+    font-size: 14.5px;
+    color: var(--ivory);
+    display: none;
+    border-radius: 2px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer.footer-premium {
+    background: var(--charcoal-light);
+    border-top: 1px solid var(--rule);
+    padding: 100px 0 40px;
+    position: relative;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+    gap: 48px;
+    margin-bottom: 80px;
+  }
+  @media (max-width: 960px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 560px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  }
+
+  .footer-brand .brand {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+  .footer-brand p {
+    font-size: 15px;
+    color: var(--ivory-dim);
+    line-height: 1.7;
+    max-width: 320px;
+    margin-bottom: 24px;
+  }
+
+  .footer-col-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ivory);
+    margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .footer-links a {
+    font-size: 14.5px;
+    color: var(--ivory-dim);
+    transition: color 0.25s ease;
+  }
+  .footer-links a:hover {
+    color: var(--sand);
+  }
+
+  .footer-contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+  .footer-contact-item .c-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--sand);
+  }
+  .footer-contact-item .c-val {
+    font-size: 14.5px;
+    color: var(--ivory);
+  }
+
+  .footer-quote-box {
+    background: rgba(20, 21, 23, 0.6);
+    border: 1px solid var(--rule);
+    padding: 24px;
+    border-radius: 2px;
+  }
+  .footer-quote-box p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ivory-dim);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .footer-quote-box span {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sand);
+  }
+
+  .footer-bottom {
+    padding-top: 36px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-bottom p {
+    font-size: 13.5px;
+    color: var(--ivory-dim);
+  }
+
+  .back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sand);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: transform 0.3s ease;
+  }
+  .back-to-top:hover {
+    transform: translateY(-3px);
+  }
+
+  /* ---------- REVEAL ANIMATIONS ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--sand);
+    outline-offset: 3px;
+  }
+  /* ---------- NAV FIXES ---------- */
+header.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(20, 21, 23, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Brand Logo Image Adjustment */
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand img {
+  height: 48px; /* Standardize header logo height */
+  width: auto;
+  object-fit: contain;
+  display: block;
+  /* Filters out harsh dark background edges if the logo image is dark/untrimmed */
+  mix-blend-mode: screen; 
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--ivory-dim);
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+  color: var(--ivory);
+}
+
+/* Button & Actions Styling */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-nav {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 10px 22px;
+  border: 1px solid var(--rule-strong);
+  color: var(--sand);
+  border-radius: 2px;
+  background: rgba(212, 180, 131, 0.05);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.btn-nav:hover {
+  border-color: var(--sand);
+  color: #141517;
+  background: var(--sand);
+  box-shadow: 0 4px 15px rgba(212, 180, 131, 0.2);
+}
+</style>
 </head>
-<body class="bg-brand-bg text-gray-200 antialiased selection:bg-brand-copper selection:text-white relative min-h-screen pb-16 md:pb-0">
+<body>
 
-    <!-- Background Radial Overlay -->
-    <div class="absolute top-0 left-0 right-0 h-[800px] bg-radial-gradient pointer-events-none z-0"></div>
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="preloader-mandala">
+    <div class="preloader-ring"></div>
+    <div class="preloader-ring"></div>
+    <svg class="preloader-lotus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M12 3C12 3 8 8 8 13C8 16 10 18 12 18C14 18 16 16 16 13C16 8 12 3 12 3Z"/>
+      <path d="M12 18C9 18 4 16 3 11C6 11 10 13 12 18Z"/>
+      <path d="M12 18C15 18 20 16 21 11C18 11 14 13 12 18Z"/>
+    </svg>
+  </div>
+  <div class="preloader-title">And Now <em>Yoga</em></div>
+  <div class="preloader-sub">A Conversation With Ram Sahu</div>
+</div>
 
-    <!-- 1. Header & Navigation (Navbar) -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#121316]/80 border-b border-brand-border/60 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-<!-- Logo -->
-<a href="#" class="flex items-center gap-3 group">
-    <img src="img/logo.png" alt="andnowyoga logo" class="h-12 w-auto object-contain group-hover:opacity-90 transition">
+<!-- NAVIGATION -->
+<header class="nav" id="navbar">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="#" class="brand">
+        <img src="img/logo.png" alt="" srcset="">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="active">Overview</a></li>
+        <li><a href="#topics">Topics</a></li>
+        <li><a href="#how-it-works">Process</a></li>
+        <li><a href="#teacher">Ram Sahu</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#book" class="btn-nav">Book Session</a>
+        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="7" x2="21" y2="7"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="17" x2="21" y2="17"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" id="mobile-menu-close">&times;</button>
+  <ul>
+    <li><a href="#about" class="mobile-link">Overview</a></li>
+    <li><a href="#topics" class="mobile-link">Topics</a></li>
+    <li><a href="#how-it-works" class="mobile-link">Process</a></li>
+    <li><a href="#teacher" class="mobile-link">Ram Sahu</a></li>
+    <li><a href="#faq" class="mobile-link">FAQ</a></li>
+    <li><a href="#book" class="mobile-link" style="color:var(--sand);">Book Session (₹800)</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-media">
+    <img src="https://images.unsplash.com/photo-1549951490-363c7e240302?fm=jpg&q=80&w=2000&auto=format&fit=crop" alt="Classical Hatha Yoga meditation in natural tranquil light">
+  </div>
+  <div class="ambient-glow"></div>
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="hero-inner reveal">
+        <span class="label">Personal Guidance · Classical Hatha Yoga</span>
+        <h1>You've Got Questions.<br>Let's Talk About <span class="highlight">Your Practice</span>.</h1>
+        <p class="sub">A quiet, personal conversation about your yoga practice, your questions, and where you are right now.</p>
+        
+        <div class="hero-badge-card">
+          <svg class="badge-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <div class="badge-text">
+            60 Minutes · ₹800
+            <span>One-on-One Direct Session</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a href="#book" class="btn">
+            <span>Book a Session</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: WHEREVER YOU ARE -->
+<section class="bg-charcoal">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-head">
+        <span class="label">Wherever You Are</span>
+        <h2>You Don't Have to Have It All Figured Out.</h2>
+      </div>
+      <div class="prose">
+        <p>Maybe you're just starting.</p>
+        <p>Maybe you've been practicing for years.</p>
+        <p>Maybe you've learned different things from different places.</p>
+        <p>Maybe you have a question that you haven't been able to answer.</p>
+        <p>Maybe your practice feels inconsistent.</p>
+        <p>Maybe you simply want to know whether you're approaching something correctly.</p>
+        <p class="lead">You can bring all of that here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: TOPICS -->
+<section class="bg-brown" id="topics">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">The Conversation</span>
+      <h2>What Would You Like to Talk About?</h2>
+    </div>
+    <div class="cards reveal">
+      <div class="card">
+        <span class="card-num">01</span>
+        <h3>Your Practice</h3>
+        <p>What are you practicing? Is something not feeling quite right or aligned?</p>
+      </div>
+      <div class="card">
+        <span class="card-num">02</span>
+        <h3>Your Breath</h3>
+        <p>Questions about breath, awareness or your physical experience during practice.</p>
+      </div>
+      <div class="card">
+        <span class="card-num">03</span>
+        <h3>Your Routine</h3>
+        <p>How can your everyday routine and lifestyle better support your yogic practice?</p>
+      </div>
+      <div class="card">
+        <span class="card-num">04</span>
+        <h3>Your Difficulties</h3>
+        <p>What's getting in the way of practicing consistently or progressing deeper?</p>
+      </div>
+      <div class="card">
+        <span class="card-num">05</span>
+        <h3>Your Experiences</h3>
+        <p>Something subtle happened during practice and you're not sure how to understand it?</p>
+      </div>
+      <div class="card">
+        <span class="card-num">06</span>
+        <h3>Your Direction</h3>
+        <p>You're practicing steadily, but you're wondering what naturally comes next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: HOW IT WORKS -->
+<section class="bg-charcoal" id="how-it-works">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">Process</span>
+      <h2>Let's Keep It Simple.</h2>
+    </div>
+    <div class="process reveal">
+      <div class="step">
+        <div class="num">01</div>
+        <h3>You Tell Me</h3>
+        <p>Tell me about your practice, your current routine, and what's on your mind.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h3>We Talk</h3>
+        <p>Bring your doubts, genuine questions, and any difficulties you encounter.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h3>We Explore</h3>
+        <p>We'll look at your practice carefully from where you are right now.</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h3>You Leave With Clarity</h3>
+        <p>Take away a clearer understanding of what may be useful for your practice forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: SESSION CARD -->
+<section class="bg-forest">
+  <div class="wrap">
+    <div class="session-card reveal">
+      <span class="label">Personal Guidance Session</span>
+      <div class="price">₹800</div>
+      <div class="dur">60 Minutes · Online via Zoom</div>
+      <div class="divider"></div>
+      <div class="with">One-to-one direct guidance with</div>
+      <div class="teacher-name">Ram Sahu</div>
+      <div class="teacher-role">Isha Hatha Yoga Teacher</div>
+      <a href="#book" class="btn" style="width: 100%;">Book Your Session</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: TEACHER -->
+<section class="bg-brown" id="teacher">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">Your Teacher</span>
+      <h2>Who Will You Be Talking To?</h2>
+    </div>
+    <div class="teacher-grid reveal">
+      <div class="portrait-frame">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="36" r="18" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M18 92c0-20 14-34 32-34s32 14 32 34" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <div class="portrait-caption">Ram Sahu — Classical Hatha Yoga Teacher</div>
+      </div>
+      <div class="teacher-copy">
+        <p class="quote">"I spent five years in the corporate world before making a decision in 2016 to dedicate myself to yoga."</p>
+        <p>He'd built a career after his MBA — the kind most people spend their twenties working toward. And then, in 2016, he left it. Not out of frustration with the work, but because something else had started asking for his attention.</p>
+        <p>That decision led him to the Isha School of Hatha Yoga in Coimbatore, where he trained intensively — not for a weekend, or a certificate, but for 1,750 hours. The kind of training that changes how you see practice altogether.</p>
+        <p>He's been teaching Classical Hatha Yoga ever since. Eight years now, and counting.</p>
+        <div class="credentials">
+          <div class="credential">
+            <div class="cred-num">1,750 hrs</div>
+            <div class="cred-text">Intensive training at the Isha School of Hatha Yoga, Coimbatore</div>
+          </div>
+          <div class="credential">
+            <div class="cred-num">8+ years</div>
+            <div class="cred-text">Teaching Classical Hatha Yoga to students globally</div>
+          </div>
+          <div class="credential">
+            <div class="cred-num">2016</div>
+            <div class="cred-text">Left a corporate career to dedicate himself to the yogic path</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: PHILOSOPHY -->
+<section class="bg-charcoal philosophy">
+  <div class="wrap reveal">
+    <span class="label" style="margin-bottom:20px;">Yogic Perspective</span>
+    <h2>Yoga isn't just something you do.<br>It gradually changes the way you experience yourself.</h2>
+    <p class="body-copy">It starts with the body — how you sit, how you breathe, how you hold your attention. Slowly, it moves into the mind, and then into the way you live each day. Classical Hatha Yoga was never meant to be a workout. It's a gradual, deliberate process, and every conversation here begins from that understanding.</p>
+  </div>
+</section>
+
+<!-- SECTION 8: FOR YOU -->
+<section class="bg-forest">
+  <div class="wrap reveal">
+    <div class="section-head" style="margin-bottom:40px;">
+      <span class="label">Is This For You?</span>
+      <h2>Is This Conversation For You?</h2>
+    </div>
+    <div class="foryou-list">
+      <p>If you're curious about yoga, yes.</p>
+      <p>If you're new, that's okay.</p>
+      <p>If you've been practicing for years, that's okay too.</p>
+      <p>If you're confused, bring the confusion.</p>
+      <p>If you're simply looking for clarity, start there.</p>
+    </div>
+    <div class="closing-line">Come as you are.</div>
+  </div>
+</section>
+
+<!-- SECTION 9: TESTIMONIALS -->
+<section class="bg-charcoal">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">In Their Words</span>
+      <h2>What Conversations Have Felt Like.</h2>
+    </div>
+    <div class="testimonials reveal">
+      <div class="testimonial">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="qtext">Talking through my practice cleared so many subtle doubts I'd been holding for months. Ram has a calm way of pointing out what really matters.</p>
+        </div>
+        <div class="who">Practitioner · Bangalore</div>
+      </div>
+      <div class="testimonial">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="qtext">I wasn't sure if I was doing my breathwork correctly. In 60 minutes, I gained clarity that changed how I approach my daily morning sadhana.</p>
+        </div>
+        <div class="who">Practitioner · Mumbai</div>
+      </div>
+      <div class="testimonial">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="qtext">No jargon, no pretense. Just an open, deeply insightful conversation about yoga and daily life. Highly recommended for anyone on this path.</p>
+        </div>
+        <div class="who">Practitioner · Delhi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10: FAQ -->
+<section class="bg-brown" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">Before You Book</span>
+      <h2>A Few Questions People Ask.</h2>
+    </div>
+    <div class="faq-container reveal">
+      <div class="faq-item">
+        <button class="faq-q"><span>Do I need previous yoga experience?</span><span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>No. This conversation meets you where you are — whether you've never practiced before or you've been practicing for years.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>What can I discuss during the session?</span><span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Anything related to your practice — your postures, your breath, your routine, your doubts, or something you experienced that you'd like to understand better.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Is this a yoga class?</span><span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>No. This is a personal conversation, not instruction in a group setting. It's for talking things through, one to one.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Can we discuss my existing practice?</span><span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Yes. Bring whatever you currently practice, wherever you learned it, and we'll talk through it together with respect and care.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Is the session online?</span><span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Yes, sessions are held online via Zoom, so you can join comfortably from wherever you are in the world.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>How do I book a session?</span><span class="plus">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Fill in the short form below with a few details and your preferred date and time. You'll be contacted promptly to confirm.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="book">
+  <div class="wrap">
+    <div class="form-shell reveal">
+      <div>
+        <span class="label">Request a Session</span>
+        <h2 style="margin-top:18px;font-size:clamp(28px,3.8vw,38px);line-height:1.25;">Tell Me a Little About Where You Are.</h2>
+        <p style="margin-top:22px;font-size:16px;line-height:1.8;color:var(--ivory-dim);max-width:420px;">Fill this in whenever you're ready. There's no wrong way to answer — just write as you would to a person, because you are.</p>
+        
+        <div style="margin-top:40px;padding:20px;border-left:2px solid var(--sand);background:rgba(20,21,23,0.3);">
+          <p style="font-size:14px;color:var(--sand);margin-bottom:4px;font-weight:600;">Session Summary</p>
+          <p style="font-size:14px;color:var(--ivory-dim);">60 Minutes Direct Consultation · ₹800</p>
+        </div>
+      </div>
+      <form id="booking-form">
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input type="text" id="f-name" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone / WhatsApp</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="+91 98765 43210" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-city">City & Country</label>
+          <input type="text" id="f-city" name="city" placeholder="e.g. Bangalore, India">
+        </div>
+        <div class="field">
+          <label for="f-topic">What would you like to discuss?</label>
+          <textarea id="f-topic" name="topic" rows="3" placeholder="Share a few words about your practice or questions..."></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-date">Preferred Date</label>
+            <input type="date" id="f-date" name="date">
+          </div>
+          <div class="field">
+            <label for="f-time">Preferred Time Slot</label>
+            <input type="time" id="f-time" name="time">
+          </div>
+        </div>
+        <button type="submit" class="btn" style="width:100%;margin-top:10px;">
+          <span>Request a Session</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div id="form-msg">
+          <strong>Thank you.</strong> Your request has been received. Ram will contact you shortly via Email/WhatsApp to confirm your time slot.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- PREMIUM FOOTER -->
+<footer class="footer-premium">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="brand">
+          <img src="img/logo.png" alt="" srcset="">
+        </a>
+        <p>A personal space for quiet guidance and genuine conversations around Classical Hatha Yoga practice.</p>
+        <div style="font-size:13px;color:var(--sand);">
+          Guided by Ram Sahu · Certified Isha Hatha Yoga Teacher
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#about">Overview</a></li>
+          <li><a href="#topics">The Conversation</a></li>
+          <li><a href="#how-it-works">Process</a></li>
+          <li><a href="#teacher">About Ram Sahu</a></li>
+          <li><a href="#faq">Frequently Asked</a></li>
+          <li><a href="#book">Book Session</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Session Info</h4>
+        <div class="footer-contact-item">
+          <span class="c-label">Format</span>
+          <span class="c-val">One-on-One Online (Zoom)</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="c-label">Duration</span>
+          <span class="c-val">60 Minutes</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="c-label">Investment</span>
+          <span class="c-val">₹800 INR</span>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">A Reflection</h4>
+        <div class="footer-quote-box">
+          <p>"Yoga is not about self-improvement, it is about self-realization and alignment with nature."</p>
+          <span>Classical Yogic Wisdom</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 And Now Yoga · Classical Hatha Yoga Guidance with Ram Sahu. All rights reserved.</p>
+      <button class="back-to-top" id="back-to-top">
+        <span>Back to top</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Sticky Button -->
+<a href="#book" class="btn sticky-float-btn">
+  <span>Book a Session</span>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 </a>
 
-                <!-- Middle (Desktop Navigation) -->
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-                    <a href="#guidance" class="hover:text-brand-copper transition-colors">1:1 Guidance</a>
-                    <a href="#teacher" class="hover:text-brand-copper transition-colors">Teacher</a>
-                    <a href="#quiz" class="hover:text-brand-copper transition-colors">Diagnostic Quiz</a>
-                    <a href="#modules" class="hover:text-brand-copper transition-colors">Modules</a>
-                    <a href="#pillars" class="hover:text-brand-copper transition-colors">6 Pillars</a>
-                    <a href="#faq" class="hover:text-brand-copper transition-colors">FAQs</a>
-                </nav>
-
-                <!-- Right (CTA Button) -->
-                <div class="hidden md:flex items-center">
-                    <a href="#request-session" class="bg-brand-copper hover:bg-brand-copperHover text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition duration-200 shadow-lg shadow-brand-copper/20 hover:shadow-brand-copper/40">
-                        Request Session
-                    </a>
-                </div>
-
-                <!-- Mobile Hamburger Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="p-2 text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Navigation">
-                        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
-                        <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Drawer -->
-        <div id="mobile-menu" class="hidden md:hidden border-b border-brand-border bg-[#121316]/95 backdrop-blur-lg px-4 pt-4 pb-6 space-y-4">
-            <a href="#guidance" class="block text-gray-300 hover:text-brand-copper font-medium py-1">1:1 Guidance</a>
-            <a href="#teacher" class="block text-gray-300 hover:text-brand-copper font-medium py-1">Teacher</a>
-            <a href="#quiz" class="block text-gray-300 hover:text-brand-copper font-medium py-1">Diagnostic Quiz</a>
-            <a href="#modules" class="block text-gray-300 hover:text-brand-copper font-medium py-1">Modules</a>
-            <a href="#pillars" class="block text-gray-300 hover:text-brand-copper font-medium py-1">6 Pillars</a>
-            <a href="#faq" class="block text-gray-300 hover:text-brand-copper font-medium py-1">FAQs</a>
-            <div class="pt-2">
-                <a href="#request-session" class="block text-center bg-brand-copper hover:bg-brand-copperHover text-white px-5 py-3 rounded-lg text-sm font-semibold transition">
-                    Request Session
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <main class="relative z-10">
-
-        <!-- 2. Hero Section -->
-        <section id="guidance" class="pt-16 pb-20 md:pt-24 md:pb-28 max-w-5xl mx-auto px-4 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-copper/10 border border-brand-copper/30 mb-6">
-                <span class="w-1.5 h-1.5 rounded-full bg-brand-copper animate-pulse"></span>
-                <span class="text-xs font-semibold uppercase tracking-widest text-brand-copper">1:1 SADHANA GUIDANCE</span>
-            </div>
-
-            <h1 class="serif-heading text-3xl sm:text-5xl lg:text-6xl font-normal text-white leading-tight mb-6">
-                Elevate Your Sadhana from Routine Exercise to Sacred Transformation
-            </h1>
-
-            <p class="text-gray-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8 font-light">
-                Receive precision physical alignment, deep pranic refinement, and individualized lifestyle mastery through structured Classical Hatha Yoga personal guidance sessions.
-            </p>
-
-            <div class="inline-block bg-brand-card/80 border border-brand-border px-4 py-2 rounded-md text-xs sm:text-sm font-medium text-gray-300 mb-8">
-                1.5 Hours / Day • One-to-One • Online & In-Person
-            </div>
-
-            <div class="flex flex-col items-center gap-4 mb-14">
-                <p class="text-xs uppercase tracking-wider text-brand-textMuted font-medium">
-                    Foundation 2-Day Module & 3-Day Intensive Available
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center">
-                    <a href="#request-session" class="bg-brand-copper hover:bg-brand-copperHover text-white px-8 py-3.5 rounded-lg text-sm font-semibold transition duration-200 shadow-lg shadow-brand-copper/25 text-center">
-                        Book Your Personal Session
-                    </a>
-                    <a href="#quiz" class="border border-brand-border bg-brand-card/50 hover:bg-brand-card text-gray-200 px-8 py-3.5 rounded-lg text-sm font-semibold transition text-center hover:border-gray-500">
-                        Take Diagnostic Quiz
-                    </a>
-                </div>
-            </div>
-
-            <div class="pt-8 border-t border-brand-border/50 max-w-4xl mx-auto flex flex-wrap justify-center items-center gap-6 text-xs text-brand-textMuted">
-                <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-brand-copper"></i> 100% Authentic Classical Lineage</span>
-                <span class="hidden sm:inline">•</span>
-                <span class="flex items-center gap-1.5"><i data-lucide="user-check" class="w-4 h-4 text-brand-copper"></i> 1-on-1 Personalized Attention</span>
-                <span class="hidden sm:inline">•</span>
-                <span class="flex items-center gap-1.5"><i data-lucide="globe" class="w-4 h-4 text-brand-copper"></i> Online & In-Person Modules</span>
-            </div>
-        </section>
-
-        <!-- Teacher Lineage & Credentials Profile Section -->
-        <section id="teacher" class="py-20 bg-black/40 border-y border-brand-border/40">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="relative group">
-                            <div class="absolute -inset-1 bg-gradient-to-r from-brand-copper to-yellow-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
-                            <div class="relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card p-4">
-                                <div class="w-full h-80 sm:h-96 rounded-xl bg-neutral-800 flex flex-col items-center justify-center text-center p-6 border border-brand-border/50">
-                                    <div class="w-24 h-24 rounded-full bg-brand-copper/10 border-2 border-brand-copper/40 flex items-center justify-center mb-4 text-brand-copper">
-                                        <i data-lucide="user" class="w-12 h-12"></i>
-                                    </div>
-                                    <h4 class="serif-heading text-xl text-white font-semibold">Acharya Anand</h4>
-                                    <p class="text-xs text-brand-copper uppercase tracking-wider mt-1 font-medium">Classical Hatha Yoga Teacher</p>
-                                    <span class="text-xs text-brand-textMuted mt-4 italic">"Transmitting classical yoga in its pure, unadulterated form."</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-7 space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-copper/10 border border-brand-copper/30">
-                            <i data-lucide="award" class="w-3.5 h-3.5 text-brand-copper"></i>
-                            <span class="text-xs font-semibold uppercase tracking-widest text-brand-copper">Authentic Lineage</span>
-                        </div>
-
-                        <h2 class="serif-heading text-2xl sm:text-4xl text-white">
-                            Rooted in Tradition, Grounded in Precision
-                        </h2>
-
-                        <p class="text-gray-300 text-sm sm:text-base leading-relaxed font-light">
-                            Trained rigorously in traditional ashram environments, Acharya Anand brings over 1,750+ hours of classical gurukul education and 8+ years of dedicated instruction in Classical Hatha Yoga.
-                        </p>
-
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
-                            <div class="bg-brand-card border border-brand-border p-4 rounded-xl">
-                                <div class="serif-heading text-2xl text-brand-copper font-bold">1,750+</div>
-                                <div class="text-xs text-brand-textMuted mt-1">Ashram Training Hours</div>
-                            </div>
-                            <div class="bg-brand-card border border-brand-border p-4 rounded-xl">
-                                <div class="serif-heading text-2xl text-brand-copper font-bold">8+</div>
-                                <div class="text-xs text-brand-textMuted mt-1">Years Teaching Sadhana</div>
-                            </div>
-                            <div class="bg-brand-card border border-brand-border p-4 rounded-xl col-span-2 sm:col-span-1">
-                                <div class="serif-heading text-2xl text-brand-copper font-bold">500+</div>
-                                <div class="text-xs text-brand-textMuted mt-1">Practitioners Guided</div>
-                            </div>
-                        </div>
-
-                        <ul class="space-y-3 pt-2 text-sm text-gray-300">
-                            <li class="flex items-center gap-3">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-copper flex-shrink-0"></i>
-                                <span>Certified in Classical Hatha Yoga & Yogic Physiology</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-copper flex-shrink-0"></i>
-                                <span>Direct lineage transmission focusing on inner alignment & prana</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-copper flex-shrink-0"></i>
-                                <span>Specialized in custom sadhana refinement & posture micro-corrections</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Diagnostics Quiz -->
-        <section id="quiz" class="py-20 max-w-4xl mx-auto px-4 sm:px-6">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-copper/10 border border-brand-copper/30 mb-3">
-                    <i data-lucide="help-circle" class="w-3.5 h-3.5 text-brand-copper"></i>
-                    <span class="text-xs font-semibold uppercase tracking-widest text-brand-copper">Sadhana Assessment</span>
-                </div>
-                <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-3">
-                    Identify Your Practice Gap
-                </h2>
-                <p class="text-brand-textMuted text-sm">
-                    Answer 3 quick questions to discover where your practice needs refinement and find the right module for you.
-                </p>
-            </div>
-
-            <div class="bg-brand-card border border-brand-border p-6 sm:p-8 rounded-2xl shadow-xl">
-                <!-- Step 1 -->
-                <div id="quiz-step-1" class="quiz-step space-y-4">
-                    <div class="flex items-center justify-between text-xs text-brand-textMuted font-medium mb-2">
-                        <span>QUESTION 1 OF 3</span>
-                        <span class="text-brand-copper">33%</span>
-                    </div>
-                    <h3 class="serif-heading text-lg sm:text-xl text-white">What primary challenge do you experience during daily sadhana?</h3>
-                    <div class="space-y-2.5 pt-2">
-                        <button onclick="nextQuizStep(1, 'posture')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
-                            <span>Physical strain, joint stiffness, or difficulty holding postures.</span>
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
-                        </button>
-                        <button onclick="nextQuizStep(1, 'breath')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
-                            <span>Irregular breathing patterns or early fatigue during pranayama.</span>
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
-                        </button>
-                        <button onclick="nextQuizStep(1, 'routine')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
-                            <span>Inconsistent daily schedule, diet confusion, or mental restlessness.</span>
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 2 -->
-                <div id="quiz-step-2" class="quiz-step hidden space-y-4">
-                    <div class="flex items-center justify-between text-xs text-brand-textMuted font-medium mb-2">
-                        <span>QUESTION 2 OF 3</span>
-                        <span class="text-brand-copper">66%</span>
-                    </div>
-                    <h3 class="serif-heading text-lg sm:text-xl text-white">How consistently have you been practicing Classical Hatha Yoga?</h3>
-                    <div class="space-y-2.5 pt-2">
-                        <button onclick="nextQuizStep(2, 'beginner')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
-                            <span>Less than 6 months (establishing core foundations).</span>
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
-                        </button>
-                        <button onclick="nextQuizStep(2, 'intermediate')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
-                            <span>6 months to 2 years (seeking deeper alignment corrections).</span>
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
-                        </button>
-                        <button onclick="nextQuizStep(2, 'advanced')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
-                            <span>2+ years (feeling stagnant or seeking full spiritual overhaul).</span>
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 3 -->
-                <div id="quiz-step-3" class="quiz-step hidden space-y-4">
-                    <div class="flex items-center justify-between text-xs text-brand-textMuted font-medium mb-2">
-                        <span>QUESTION 3 OF 3</span>
-                        <span class="text-brand-copper">100%</span>
-                    </div>
-                    <h3 class="serif-heading text-lg sm:text-xl text-white">What is your primary goal for seeking personal guidance?</h3>
-                    <div class="space-y-2.5 pt-2">
-                        <button onclick="finishQuiz('2-day')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
-                            <span>Quick posture check-up and immediate alignment adjustments.</span>
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
-                        </button>
-                        <button onclick="finishQuiz('3-day')" class="w-full text-left p-4 rounded-xl border border-brand-border bg-brand-bg hover:border-brand-copper hover:bg-brand-copper/5 text-sm transition flex items-center justify-between group">
-                            <span>Comprehensive restructuring of diet, breath, and 90-day spiritual plan.</span>
-                            <i data-lucide="chevron-right" class="w-4 h-4 text-brand-textMuted group-hover:text-brand-copper"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Quiz Result -->
-                <div id="quiz-result" class="hidden text-center py-6 space-y-6">
-                    <div class="w-16 h-16 bg-brand-copper/10 border border-brand-copper/30 text-brand-copper rounded-full flex items-center justify-center mx-auto">
-                        <i data-lucide="sparkles" class="w-8 h-8"></i>
-                    </div>
-                    <div>
-                        <span class="text-xs uppercase tracking-widest text-brand-copper font-semibold">Recommended Module</span>
-                        <h3 id="result-title" class="serif-heading text-2xl text-white mt-1">Foundation 2-Day Module</h3>
-                        <p id="result-desc" class="text-sm text-brand-textMuted max-w-lg mx-auto mt-2 leading-relaxed">
-                            Based on your answers, a focused diagnostic check-up will resolve your alignment bottlenecks and refine your daily practice sequence.
-                        </p>
-                    </div>
-                    <div class="pt-2">
-                        <a href="#request-session" class="inline-block bg-brand-copper hover:bg-brand-copperHover text-white px-8 py-3 rounded-lg text-sm font-semibold transition">
-                            Book Recommended Guidance
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. The Problem Section ("Why Seekers Stall") -->
-        <section class="py-20 bg-black/20 border-y border-brand-border/40">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-14">
-                    <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
-                        Why Practitioners Plateau in Their Sadhana
-                    </h2>
-                    <p class="text-brand-textMuted text-sm sm:text-base">
-                        Many dedicated practitioners practice diligent sadhana for years without experiencing deep inner transformation. Here is why many find themselves stuck on a plateau:
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-brand-card/60 border border-brand-border p-6 rounded-xl card-glow">
-                        <div class="w-10 h-10 rounded-lg bg-brand-copper/10 flex items-center justify-center text-brand-copper mb-4">
-                            <i data-lucide="alert-circle" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="serif-heading text-lg text-white mb-2">Micro-Misalignments</h3>
-                        <p class="text-sm text-brand-textMuted leading-relaxed">
-                            Slight physical inaccuracies in posture (Asana) that accumulate tension over time instead of freeing prana.
-                        </p>
-                    </div>
-
-                    <div class="bg-brand-card/60 border border-brand-border p-6 rounded-xl card-glow">
-                        <div class="w-10 h-10 rounded-lg bg-brand-copper/10 flex items-center justify-center text-brand-copper mb-4">
-                            <i data-lucide="wind" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="serif-heading text-lg text-white mb-2">Superficial Breath Awareness</h3>
-                        <p class="text-sm text-brand-textMuted leading-relaxed">
-                            Practicing Pranayama without precise timing, bandha engagement, or structural body readiness.
-                        </p>
-                    </div>
-
-                    <div class="bg-brand-card/60 border border-brand-border p-6 rounded-xl card-glow">
-                        <div class="w-10 h-10 rounded-lg bg-brand-copper/10 flex items-center justify-center text-brand-copper mb-4">
-                            <i data-lucide="apple" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="serif-heading text-lg text-white mb-2">Conflicting Diet & Lifestyle</h3>
-                        <p class="text-sm text-brand-textMuted leading-relaxed">
-                            Consuming non-sattvic foods or irregular meal timings that actively counteract morning practices.
-                        </p>
-                    </div>
-
-                    <div class="bg-brand-card/60 border border-brand-border p-6 rounded-xl card-glow">
-                        <div class="w-10 h-10 rounded-lg bg-brand-copper/10 flex items-center justify-center text-brand-copper mb-4">
-                            <i data-lucide="help-circle" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="serif-heading text-lg text-white mb-2">Solitary Doubts</h3>
-                        <p class="text-sm text-brand-textMuted leading-relaxed">
-                            Experiencing strange meditative sensations or physical roadblocks without an experienced teacher to offer context.
-                        </p>
-                    </div>
-
-                    <div class="bg-brand-card/60 border border-brand-border p-6 rounded-xl card-glow md:col-span-2 lg:col-span-1">
-                        <div class="w-10 h-10 rounded-lg bg-brand-copper/10 flex items-center justify-center text-brand-copper mb-4">
-                            <i data-lucide="clock" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="serif-heading text-lg text-white mb-2">Lack of Accountability</h3>
-                        <p class="text-sm text-brand-textMuted leading-relaxed">
-                            Difficulty maintaining daily discipline amid modern work pressures, family responsibilities, and distractions.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. What The Sessions Cover (Module Comparison Grid) -->
-        <section id="modules" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
-                    Structured Sessions Tailored to Your Depth
-                </h2>
-                <p class="text-brand-textMuted text-sm sm:text-base">
-                    Select the program depth that best aligns with your current practice check-ups or full spiritual overhaul.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Module 1 -->
-                <div class="bg-brand-card border border-brand-border p-8 rounded-2xl relative flex flex-col justify-between card-glow">
-                    <div>
-                        <div class="text-xs font-semibold text-brand-copper uppercase tracking-wider mb-2">Foundation Module</div>
-                        <h3 class="serif-heading text-2xl text-white mb-2">2-Day Intensive</h3>
-                        <p class="text-sm text-brand-textMuted mb-6">1.5 Hours / Day (Total 3 Hours) — Ideal for practice check-ups and core corrections.</p>
-                        <div class="border-b border-brand-border mb-6"></div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-start gap-3">
-                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
-                                <span class="text-sm text-gray-300">Diagnostic posture assessment</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
-                                <span class="text-sm text-gray-300">Breath refinement patterns</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
-                                <span class="text-sm text-gray-300">Sattvic diet & timing adjustments</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
-                                <span class="text-sm text-gray-300">Custom daily practice checklist</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <a href="#request-session" class="w-full py-3 rounded-lg border border-brand-border bg-brand-bg hover:bg-brand-border/40 text-center text-sm font-semibold transition text-white">
-                        Select 2-Day Module
-                    </a>
-                </div>
-
-                <!-- Module 2 -->
-                <div class="bg-brand-card border-2 border-brand-copper/50 p-8 rounded-2xl relative flex flex-col justify-between card-glow shadow-xl shadow-brand-copper/5">
-                    <div class="absolute -top-3.5 right-6 bg-brand-copper text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
-                        Recommended
-                    </div>
-                    <div>
-                        <div class="text-xs font-semibold text-brand-copper uppercase tracking-wider mb-2">Deep Overhaul</div>
-                        <h3 class="serif-heading text-2xl text-white mb-2">3-Day Intensive Module</h3>
-                        <p class="text-sm text-brand-textMuted mb-6">1.5 Hours / Day (Total 4.5 Hours) — Complete spiritual overhaul & restructuring.</p>
-                        <div class="border-b border-brand-border mb-6"></div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-start gap-3">
-                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
-                                <span class="text-sm text-gray-300">Complete biomechanical & energetic posture audit</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
-                                <span class="text-sm text-gray-300">Advanced breath refinement & internal focus techniques</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
-                                <span class="text-sm text-gray-300">Full Sattvic diet & fasting protocols</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
-                                <span class="text-sm text-gray-300">Extended Q&A for meditative doubts & blocks</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <div class="p-1 rounded-full bg-brand-copper/10 text-brand-copper mt-0.5"><i data-lucide="check" class="w-4 h-4"></i></div>
-                                <span class="text-sm text-gray-300">Personal 90-Day Spiritual Roadmap</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <a href="#request-session" class="w-full py-3 rounded-lg bg-brand-copper hover:bg-brand-copperHover text-center text-sm font-semibold transition text-white shadow-md">
-                        Select 3-Day Intensive
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. The 6 Core Pillars of Guidance -->
-        <section id="pillars" class="py-20 bg-black/20 border-y border-brand-border/40">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-16">
-                    <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
-                        The 6 Dimensions of Practice
-                    </h2>
-                    <p class="text-brand-textMuted text-sm sm:text-base">
-                        A holistic, structured approach to refining every aspect of your sadhana journey.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs font-serif text-brand-copper mb-2 block">01</span>
-                            <h3 class="serif-heading text-lg text-white mb-2">Physical Alignment</h3>
-                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Asana Precision</p>
-                            <p class="text-sm text-brand-textMuted leading-relaxed">
-                                Correct subtle skeletal misalignments, release joint restrictions, and learn posture stability so energy flows unobstructed.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs font-serif text-brand-copper mb-2 block">02</span>
-                            <h3 class="serif-heading text-lg text-white mb-2">Breath Awareness</h3>
-                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Prana Refinement</p>
-                            <p class="text-sm text-brand-textMuted leading-relaxed">
-                                Master rhythmic breath retention, diaphragm engagement, and subtle energy distribution to calm the nervous system.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs font-serif text-brand-copper mb-2 block">03</span>
-                            <h3 class="serif-heading text-lg text-white mb-2">Diet & Sattvic Discipline</h3>
-                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Dietary Mastery</p>
-                            <p class="text-sm text-brand-textMuted leading-relaxed">
-                                Optimize digestion, meal timing, and food choices so your physical body becomes an asset rather than an obstacle during practice.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs font-serif text-brand-copper mb-2 block">04</span>
-                            <h3 class="serif-heading text-lg text-white mb-2">Mental Clarity</h3>
-                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Meditation Context</p>
-                            <p class="text-sm text-brand-textMuted leading-relaxed">
-                                Gain conceptual understanding of mind mechanics, dissolve doubts, and properly contextualize meditative experiences.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs font-serif text-brand-copper mb-2 block">05</span>
-                            <h3 class="serif-heading text-lg text-white mb-2">Daily Structure</h3>
-                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Habit Architecture</p>
-                            <p class="text-sm text-brand-textMuted leading-relaxed">
-                                Build an unwavering routine tailored to your work and family commitments that protects your daily sadhana practice.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="bg-brand-card border border-brand-border p-6 rounded-xl card-glow flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs font-serif text-brand-copper mb-2 block">06</span>
-                            <h3 class="serif-heading text-lg text-white mb-2">Long-Term Direction</h3>
-                            <p class="text-xs text-brand-copper mb-3 uppercase tracking-wider font-semibold">Spiritual Roadmap</p>
-                            <p class="text-sm text-brand-textMuted leading-relaxed">
-                                Establish clear milestones for internal evolution, moving beyond casual practice into purpose-driven spiritual living.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. Process Step-by-Step ("How It Works") -->
-        <section class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
-                    How Your Guidance Unfolds
-                </h2>
-                <p class="text-brand-textMuted text-sm sm:text-base">
-                    A seamless 3-step pathway to personal practice refinement.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-                <div class="bg-brand-card/40 border border-brand-border p-6 rounded-xl relative text-center">
-                    <div class="w-12 h-12 rounded-full bg-brand-copper/10 border border-brand-copper/30 text-brand-copper flex items-center justify-center font-serif text-lg font-bold mx-auto mb-4">
-                        1
-                    </div>
-                    <h3 class="serif-heading text-lg text-white mb-2">Request Your Session</h3>
-                    <p class="text-sm text-brand-textMuted leading-relaxed">
-                        Fill out the pre-guidance assessment form to document your current practices and main goals.
-                    </p>
-                </div>
-
-                <div class="bg-brand-card/40 border border-brand-border p-6 rounded-xl relative text-center">
-                    <div class="w-12 h-12 rounded-full bg-brand-copper/10 border border-brand-copper/30 text-brand-copper flex items-center justify-center font-serif text-lg font-bold mx-auto mb-4">
-                        2
-                    </div>
-                    <h3 class="serif-heading text-lg text-white mb-2">Meet Your Teacher 1-on-1</h3>
-                    <p class="text-sm text-brand-textMuted leading-relaxed">
-                        Interactive session with direct posture and pranayama corrections (Online HD video or In-Person).
-                    </p>
-                </div>
-
-                <div class="bg-brand-card/40 border border-brand-border p-6 rounded-xl relative text-center">
-                    <div class="w-12 h-12 rounded-full bg-brand-copper/10 border border-brand-copper/30 text-brand-copper flex items-center justify-center font-serif text-lg font-bold mx-auto mb-4">
-                        3
-                    </div>
-                    <h3 class="serif-heading text-lg text-white mb-2">Receive Your Plan</h3>
-                    <p class="text-sm text-brand-textMuted leading-relaxed">
-                        Walk away with clear, custom daily routines, practice checklists, and personalized diet guidance.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. Frequently Asked Questions (Accordion) -->
-        <section id="faq" class="py-20 bg-black/20 border-y border-brand-border/40">
-            <div class="max-w-3xl mx-auto px-4 sm:px-6">
-                <div class="text-center mb-14">
-                    <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
-                        Frequently Asked Questions
-                    </h2>
-                    <p class="text-brand-textMuted text-sm">
-                        Everything you need to know about the guidance sessions.
-                    </p>
-                </div>
-
-                <div class="space-y-4">
-                    <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden">
-                        <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium hover:bg-brand-border/20 transition">
-                            <span class="serif-heading text-base">Do I need to be an advanced practitioner to apply for personal guidance?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-copper transition-transform duration-200"></i>
-                        </button>
-                        <div class="faq-answer hidden px-6 pb-5 text-sm text-brand-textMuted leading-relaxed">
-                            No. Whether you have been practicing for 6 months or 10 years, guidance is customized to your current proficiency and bodily needs.
-                        </div>
-                    </div>
-
-                    <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden">
-                        <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium hover:bg-brand-border/20 transition">
-                            <span class="serif-heading text-base">What is the difference between Online and Offline (In-Person) sessions?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-copper transition-transform duration-200"></i>
-                        </button>
-                        <div class="faq-answer hidden px-6 pb-5 text-sm text-brand-textMuted leading-relaxed">
-                            Online sessions are conducted via high-definition video calls with real-time posture corrections. In-person sessions take place at our designated center with direct physical alignment.
-                        </div>
-                    </div>
-
-                    <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden">
-                        <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center text-white font-medium hover:bg-brand-border/20 transition">
-                            <span class="serif-heading text-base">How do I prepare for my first session?</span>
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-brand-copper transition-transform duration-200"></i>
-                        </button>
-                        <div class="faq-answer hidden px-6 pb-5 text-sm text-brand-textMuted leading-relaxed">
-                            Upon confirmation, you will receive a pre-session questionnaire to document your daily routine, practice sequence, and health history.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 8. Practitioner Stories (Testimonial Cards Grid) -->
-        <section id="testimonials" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <div class="text-xs font-semibold text-brand-copper uppercase tracking-widest mb-2">Practitioner Voices</div>
-                <h2 class="serif-heading text-2xl sm:text-4xl text-white mb-4">
-                    Stories from Fellow Seekers
-                </h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-brand-card border border-brand-border p-6 rounded-xl flex flex-col justify-between card-glow">
-                    <p class="text-sm text-gray-300 italic mb-6 leading-relaxed">
-                        "The micro-corrections in my Surya Kriya posture completely eliminated my lower back strain. I can now sit in meditative stillness effortlessly for over an hour."
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-copper/20 flex items-center justify-center font-serif text-brand-copper font-bold">
-                            AR
-                        </div>
-                        <div>
-                            <div class="text-sm font-semibold text-white">Ananya Rao</div>
-                            <div class="text-xs text-brand-textMuted">Practitioner (3 Years)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-brand-card border border-brand-border p-6 rounded-xl flex flex-col justify-between card-glow">
-                    <p class="text-sm text-gray-300 italic mb-6 leading-relaxed">
-                        "Understanding dietary timings and sattvic principles transformed my morning energy. My breath retention doubled naturally within two weeks."
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-copper/20 flex items-center justify-center font-serif text-brand-copper font-bold">
-                            MK
-                        </div>
-                        <div>
-                            <div class="text-sm font-semibold text-white">Markus Keller</div>
-                            <div class="text-xs text-brand-textMuted">Practitioner (5 Years)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-brand-card border border-brand-border p-6 rounded-xl flex flex-col justify-between card-glow">
-                    <p class="text-sm text-gray-300 italic mb-6 leading-relaxed">
-                        "Having direct answers to long-standing doubts gave me the clarity I needed. The 90-day spiritual roadmap keeps my daily discipline laser-focused."
-                    </p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-copper/20 flex items-center justify-center font-serif text-brand-copper font-bold">
-                            VS
-                        </div>
-                        <div>
-                            <div class="text-sm font-semibold text-white">Vikram Sharma</div>
-                            <div class="text-xs text-brand-textMuted">Practitioner (2 Years)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 9. Lead Capture Form Section -->
-        <section id="request-session" class="py-20 bg-black/40 border-t border-brand-border/40">
-            <div class="max-w-3xl mx-auto px-4 sm:px-6">
-                <!-- Dynamic Slot Availability Banner -->
-                <div class="mb-6 bg-gradient-to-r from-brand-copper/20 via-brand-copper/10 to-brand-copper/20 border border-brand-copper/40 p-3.5 rounded-xl text-center flex items-center justify-center gap-2.5 animate-pulse">
-                    <i data-lucide="clock" class="w-4 h-4 text-brand-copper flex-shrink-0"></i>
-                    <span class="text-xs sm:text-sm font-semibold text-amber-200">
-                        Limited Capacity: Only <span class="underline text-white font-bold">3 guidance slots</span> remaining for this month
-                    </span>
-                </div>
-
-                <div class="bg-brand-card border border-brand-border p-8 sm:p-10 rounded-2xl shadow-2xl">
-                    <div class="text-center mb-8">
-                        <h2 class="serif-heading text-2xl sm:text-3xl text-white mb-2">
-                            Request Your Personal Guidance Session
-                        </h2>
-                        <p class="text-sm text-brand-textMuted">
-                            Fill in your details below to schedule your pre-guidance assessment.
-                        </p>
-                    </div>
-
-                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('Request submitted successfully!');">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-medium text-gray-300 mb-2">Full Name *</label>
-                                <input type="text" required placeholder="Siddharth Mehta" class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-copper">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-medium text-gray-300 mb-2">Email Address *</label>
-                                <input type="email" required placeholder="siddharth@example.com" class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-copper">
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-medium text-gray-300 mb-2">City & Country *</label>
-                                <input type="text" required placeholder="Bengaluru, India" class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-copper">
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-medium text-gray-300 mb-2">Practice Duration *</label>
-                                <select class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-brand-copper">
-                                    <option>&lt; 1 Year</option>
-                                    <option>1 - 3 Years</option>
-                                    <option>3 - 5 Years</option>
-                                    <option>5+ Years</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                            <div>
-                                <label class="block text-xs font-medium text-gray-300 mb-2">Preferred Module *</label>
-                                <select id="preferred-module-select" class="w-full bg-brand-bg border border-brand-border rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-brand-copper">
-                                    <option>Foundation 2-Day</option>
-                                    <option>Intensive 3-Day</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-medium text-gray-300 mb-2">Session Mode *</label>
-                                <select class="w-full bg-brand-bg border border-brand-border rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-brand-copper">
-                                    <option>Online Video</option>
-                                    <option>In-Person (Offline)</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-medium text-gray-300 mb-2">Preferred Time Slot *</label>
-                                <select class="w-full bg-brand-bg border border-brand-border rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-brand-copper">
-                                    <option>Morning (6 AM - 9 AM)</option>
-                                    <option>Afternoon (12 PM - 3 PM)</option>
-                                    <option>Evening (5 PM - 8 PM)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-medium text-gray-300 mb-2">Current Yoga Practices</label>
-                            <textarea rows="2" placeholder="List your current practices (e.g., Surya Kriya, Yogasanas, Pranayama)..." class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-copper"></textarea>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-medium text-gray-300 mb-2">Specific Concerns or Primary Goals</label>
-                            <textarea rows="3" placeholder="Specify main obstacles, posture challenges, or meditation doubts..." class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-brand-copper"></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full bg-brand-copper hover:bg-brand-copperHover text-white font-semibold py-3.5 rounded-lg text-sm transition shadow-lg shadow-brand-copper/20">
-                            Submit Session Request
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Mobile Floating Action Button (FAB) Bar -->
-    <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-[#121316]/95 backdrop-blur-lg border-t border-brand-border p-3">
-        <a href="#request-session" class="flex items-center justify-center gap-2 w-full bg-brand-copper hover:bg-brand-copperHover text-white py-3 rounded-xl font-semibold text-sm shadow-lg shadow-brand-copper/30 transition">
-            <i data-lucide="calendar" class="w-4 h-4"></i>
-            <span>Book Guidance Session</span>
-        </a>
-    </div>
-<!-- 10. Footer Section -->
-<footer class="bg-black/80 border-t border-brand-border/60 py-16 text-xs text-brand-textMuted">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
-            <!-- Left Column: Branding & Quote -->
-<div class="md:col-span-2 space-y-4">
-    <a href="#" class="inline-block">
-        <img src="img/logo.png" alt="andnowyoga logo" class="h-16 w-auto object-contain">
-    </a>
-                <p class="max-w-sm leading-relaxed text-gray-400">
-                    Refining sadhana through structured guidance and personal direction for serious yoga practitioners.
-                </p>
-                <p class="italic text-gray-500">
-                    "Spiritual growth is not about adding more practices; it is about refining what you already do until it opens the inner door."
-                </p>
-
-                <!-- Social Media Links Section -->
-                <div class="pt-2">
-                    <h4 class="serif-heading text-xs text-white uppercase tracking-wider mb-3">Connect With Us</h4>
-                    <div class="flex items-center gap-3">
-                        <!-- Facebook -->
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-brand-copper hover:border-brand-copper/50 hover:bg-brand-copper/10 transition duration-200">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        </a>
-                        <!-- Twitter / X -->
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="w-9 h-9 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-brand-copper hover:border-brand-copper/50 hover:bg-brand-copper/10 transition duration-200">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.936 9.936 0 0024 4.59z"/></svg>
-                        </a>
-                        <!-- YouTube -->
-                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-9 h-9 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center text-gray-400 hover:text-brand-copper hover:border-brand-copper/50 hover:bg-brand-copper/10 transition duration-200">
-                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Middle Column: Platform Links -->
-            <div>
-                <h4 class="serif-heading text-sm text-white mb-4 uppercase tracking-wider">Platform</h4>
-                <ul class="space-y-2.5">
-                    <li><a href="#guidance" class="hover:text-brand-copper transition">1:1 Guidance</a></li>
-                    <li><a href="#teacher" class="hover:text-brand-copper transition">Teacher Lineage</a></li>
-                    <li><a href="#quiz" class="hover:text-brand-copper transition">Diagnostic Quiz</a></li>
-                    <li><a href="#modules" class="hover:text-brand-copper transition">Modules</a></li>
-                </ul>
-            </div>
-
-            <!-- Right Column: Contact -->
-            <div>
-                <h4 class="serif-heading text-sm text-white mb-4 uppercase tracking-wider">Contact & Socials</h4>
-                <ul class="space-y-2.5">
-                    <li><a href="mailto:info@andnowyoga.org" class="hover:text-brand-copper transition">info@andnowyoga.org</a></li>
-                    <li><a href="tel:+919755701608" class="hover:text-brand-copper transition">+91 97557-01608</a></li>
-                    <li class="pt-2 border-t border-brand-border/40">
-                        <a href="https://wa.me/919755701608" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-brand-copper transition">
-                            <i data-lucide="message-circle" class="w-3.5 h-3.5 text-brand-copper"></i>
-                            <span>WhatsApp Us</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Footer Bottom Bar -->
-        <div class="border-t border-brand-border/40 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© 2026 andnowyoga. All rights reserved. Made in Bharat.</p>
-            <div class="flex items-center gap-4 text-gray-500">
-                <span>Authentic Classical Lineage</span>
-                <span>•</span>
-                <span>Hatha Yoga Sadhana</span>
-            </div>
-        </div>
-    </div>
-</footer>
-    <!-- JavaScript Interactivity -->
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const closeIcon = document.getElementById('close-icon');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-        });
-
-        // FAQ Accordion Toggle
-        const faqBtns = document.querySelectorAll('.faq-btn');
-        faqBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const answer = btn.nextElementSibling;
-                const icon = btn.querySelector('i');
-                answer.classList.toggle('hidden');
-                if (answer.classList.contains('hidden')) {
-                    icon.style.transform = 'rotate(0deg)';
-                } else {
-                    icon.style.transform = 'rotate(180deg)';
-                }
-            });
-        });
-
-        // Diagnostic Quiz Logic
-        let selectedModuleType = '2-day';
-
-        function nextQuizStep(currentStep, choice) {
-            document.getElementById(`quiz-step-${currentStep}`).classList.add('hidden');
-            document.getElementById(`quiz-step-${currentStep + 1}`).classList.remove('hidden');
+<script>
+  // Preloader hide logic
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      var preloader = document.getElementById('preloader');
+      if (preloader) preloader.classList.add('loaded');
+    }, 600);
+  });
+
+  // Fallback preloader timeout
+  setTimeout(function() {
+    var preloader = document.getElementById('preloader');
+    if (preloader && !preloader.classList.contains('loaded')) {
+      preloader.classList.add('loaded');
+    }
+  }, 2500);
+
+  // Navbar scroll blur effect
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 40) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile menu toggle
+  var mobileToggleBtn = document.getElementById('mobile-toggle-btn');
+  var mobileMenuClose = document.getElementById('mobile-menu-close');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var mobileLinks = document.querySelectorAll('.mobile-link');
+
+  function openMobileMenu() { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMobileMenu() { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
+
+  if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', openMobileMenu);
+  if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+  mobileLinks.forEach(function(link) {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  // Back to top scroll
+  var backToTopBtn = document.getElementById('back-to-top');
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // FAQ Accordion logic
+  document.querySelectorAll('.faq-item').forEach(function(item) {
+    var btn = item.querySelector('.faq-q');
+    var ans = item.querySelector('.faq-a');
+    btn.addEventListener('click', function() {
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(open) {
+        if (open !== item) {
+          open.classList.remove('open');
+          open.querySelector('.faq-a').style.maxHeight = null;
         }
+      });
+      if (isOpen) {
+        item.classList.remove('open');
+        ans.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
 
-        function finishQuiz(moduleType) {
-            document.getElementById('quiz-step-3').classList.add('hidden');
-            document.getElementById('quiz-result').classList.remove('hidden');
-
-            const title = document.getElementById('result-title');
-            const desc = document.getElementById('result-desc');
-            const select = document.getElementById('preferred-module-select');
-
-            if (moduleType === '3-day') {
-                title.textContent = 'Intensive 3-Day Spiritual Overhaul';
-                desc.textContent = 'Your answers indicate a need for deep biomechanical audit, breath retention work, and a 90-day structured spiritual roadmap.';
-                if (select) select.value = 'Intensive 3-Day';
-            } else {
-                title.textContent = 'Foundation 2-Day Module';
-                desc.textContent = 'Your answers suggest a targeted diagnostic check-up will resolve your primary alignment challenges and refine your daily practice routine.';
-                if (select) select.value = 'Foundation 2-Day';
-            }
+  // Reveal elements on scroll
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
         }
-    </script>
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function(el) { io.observe(el); });
+  } else {
+    reveals.forEach(function(el) { el.classList.add('in'); });
+  }
+
+  // Active navigation highlight
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', function() {
+    var scrollY = window.pageYOffset;
+    sections.forEach(function(current) {
+      var sectionHeight = current.offsetHeight;
+      var sectionTop = current.offsetTop - 120;
+      var sectionId = current.getAttribute('id');
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navLinks.forEach(function(link) {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + sectionId) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  });
+
+  // Booking form demonstration feedback
+  var bookingForm = document.getElementById('booking-form');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var msg = document.getElementById('form-msg');
+      if (msg) msg.style.display = 'block';
+      this.reset();
+    });
+  }
+</script>
+
 </body>
 </html>
