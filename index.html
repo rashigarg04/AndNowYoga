@@ -299,6 +299,8 @@
   @media (max-width: 900px) {
     .nav-links { display: none; }
     .mobile-toggle { display: block; }
+    /* Hide Book Session button in mobile view header & navigation */
+    .btn-nav { display: none !important; }
   }
 
   /* ---------- HERO ---------- */
@@ -439,12 +441,32 @@
     transform: translateY(-2px);
   }
 
+  /* Sticky floating button starts hidden and displays ONLY after Hero section ends */
   .sticky-float-btn {
     position: fixed;
     bottom: 24px;
     right: 24px;
     z-index: 999;
     box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 15px rgba(212, 180, 131, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  }
+  .sticky-float-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  @media (max-width: 640px) {
+    .sticky-float-btn {
+      bottom: 18px;
+      right: 18px;
+      padding: 14px 24px;
+      font-size: 14px;
+    }
   }
 
   /* ---------- SECTIONS ---------- */
@@ -931,6 +953,7 @@
       </ul>
 
       <div class="nav-actions">
+        <!-- Book session link: Visible on desktop, hidden on mobile via CSS -->
         <a href="#book" class="btn-nav">Book Session</a>
         <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle menu">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -944,7 +967,7 @@
   </div>
 </header>
 
-<!-- MOBILE MENU DRAWER WITH CROSS BUTTON -->
+<!-- MOBILE MENU DRAWER WITH CROSS BUTTON (No Book Session button included) -->
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close Menu">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -958,7 +981,6 @@
     <li><a href="#how-it-works" class="mobile-link">Process</a></li>
     <li><a href="#teacher" class="mobile-link">Ram Sahu</a></li>
     <li><a href="#faq" class="mobile-link">FAQ</a></li>
-    <li><a href="#book" class="mobile-link" style="color:var(--sand-dim); font-weight:600;">Book Session (₹800)</a></li>
   </ul>
 </div>
 
@@ -1364,7 +1386,7 @@
 </footer>
 
 <!-- Floating Sticky Button -->
-<a href="#book" class="btn sticky-float-btn">
+<a href="#book" class="btn sticky-float-btn" id="sticky-btn">
   <span>Book a Session</span>
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 </a>
@@ -1386,15 +1408,35 @@
     }
   }, 2500);
 
-  // Navbar scroll blur effect
+  // Navbar scroll blur effect & Sticky Button scroll threshold check
   var navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 40) {
+  var stickyBtn = document.getElementById('sticky-btn');
+  var heroSection = document.getElementById('about');
+
+  function handleScroll() {
+    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollY > 40) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
-  });
+
+    // Sticky Button starts ONLY after hero section ends
+    if (heroSection && stickyBtn) {
+      var heroRect = heroSection.getBoundingClientRect();
+      // Show sticky button when hero section bottom is scrolled past viewport top offset
+      if (heroRect.bottom <= 80) {
+        stickyBtn.classList.add('visible');
+      } else {
+        stickyBtn.classList.remove('visible');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', handleScroll, { passive: true });
+  handleScroll();
 
   // Mobile menu toggle
   var mobileToggleBtn = document.getElementById('mobile-toggle-btn');
@@ -1477,7 +1519,7 @@
         });
       }
     });
-  });
+  }, { passive: true });
 
   // Booking form demonstration feedback
   var bookingForm = document.getElementById('booking-form');
